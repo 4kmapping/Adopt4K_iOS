@@ -1,0 +1,687 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AB328500198460CE0065B17A /* Adopt4K.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AB3284FE198460CE0065B17A /* Adopt4K.xcdatamodeld */; };
+		AB328506198473730065B17A /* OZFeature.m in Sources */ = {isa = PBXBuildFile; fileRef = AB328505198473730065B17A /* OZFeature.m */; };
+		AB45AD8B19862321008C4E70 /* FRKOZListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB45AD8A19862321008C4E70 /* FRKOZListTableViewController.m */; };
+		AB45AD8E1986334C008C4E70 /* FRKOZDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB45AD8D1986334C008C4E70 /* FRKOZDetailsViewController.m */; };
+		AB847D7B197F0B3F005E82E5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB847D7A197F0B3F005E82E5 /* Foundation.framework */; };
+		AB847D7D197F0B3F005E82E5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB847D7C197F0B3F005E82E5 /* CoreGraphics.framework */; };
+		AB847D7F197F0B3F005E82E5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB847D7E197F0B3F005E82E5 /* UIKit.framework */; };
+		AB847D85197F0B3F005E82E5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AB847D83197F0B3F005E82E5 /* InfoPlist.strings */; };
+		AB847D87197F0B3F005E82E5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AB847D86197F0B3F005E82E5 /* main.m */; };
+		AB847D8B197F0B3F005E82E5 /* FRKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AB847D8A197F0B3F005E82E5 /* FRKAppDelegate.m */; };
+		AB847D8E197F0B3F005E82E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB847D8C197F0B3F005E82E5 /* Main.storyboard */; };
+		AB847D91197F0B3F005E82E5 /* FRKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB847D90197F0B3F005E82E5 /* FRKViewController.m */; };
+		AB847D93197F0B3F005E82E5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB847D92197F0B3F005E82E5 /* Images.xcassets */; };
+		AB847D9A197F0B40005E82E5 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB847D99197F0B40005E82E5 /* XCTest.framework */; };
+		AB847D9B197F0B40005E82E5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB847D7A197F0B3F005E82E5 /* Foundation.framework */; };
+		AB847D9C197F0B40005E82E5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB847D7E197F0B3F005E82E5 /* UIKit.framework */; };
+		AB847DA4197F0B40005E82E5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AB847DA2197F0B40005E82E5 /* InfoPlist.strings */; };
+		AB847DA6197F0B40005E82E5 /* Adopt4KTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AB847DA5197F0B40005E82E5 /* Adopt4KTests.m */; };
+		AB848100197F0E78005E82E5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB8480F4197F0E78005E82E5 /* AVFoundation.framework */; };
+		AB848101197F0E78005E82E5 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB8480F5197F0E78005E82E5 /* CoreData.framework */; };
+		AB848102197F0E78005E82E5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB8480F6197F0E78005E82E5 /* CoreLocation.framework */; };
+		AB848103197F0E78005E82E5 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB8480F7197F0E78005E82E5 /* CoreText.framework */; };
+		AB848104197F0E78005E82E5 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB8480F8197F0E78005E82E5 /* GLKit.framework */; };
+		AB848105197F0E78005E82E5 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB8480F9197F0E78005E82E5 /* ImageIO.framework */; };
+		AB848106197F0E78005E82E5 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AB8480FA197F0E78005E82E5 /* libc++.dylib */; };
+		AB848108197F0E78005E82E5 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AB8480FC197F0E78005E82E5 /* libz.dylib */; };
+		AB848109197F0E78005E82E5 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB8480FD197F0E78005E82E5 /* OpenGLES.framework */; };
+		AB84810A197F0E78005E82E5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB8480FE197F0E78005E82E5 /* QuartzCore.framework */; };
+		AB84810B197F0E78005E82E5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB8480FF197F0E78005E82E5 /* SystemConfiguration.framework */; };
+		ABCB81F91984F4700081DC99 /* Adoption.m in Sources */ = {isa = PBXBuildFile; fileRef = ABCB81F81984F4700081DC99 /* Adoption.m */; };
+		ABE7AEA819803F1700A02D17 /* FRKUserProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE7AEA719803F1700A02D17 /* FRKUserProfile.m */; };
+		ABE7AEAE1980541F00A02D17 /* FRKOZFeature.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE7AEAD1980541F00A02D17 /* FRKOZFeature.m */; };
+		ABE7AEB11980575400A02D17 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ABE7AEB01980575400A02D17 /* libicucore.dylib */; };
+		ABE7AEB919805A7600A02D17 /* FRKAdoptionOZViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE7AEB819805A7600A02D17 /* FRKAdoptionOZViewController.m */; };
+		ABE7AEBB19805B8100A02D17 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABE7AEBA19805B8100A02D17 /* GoogleMaps.framework */; };
+		ABE7AEC019805C2100A02D17 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = ABE7AEBF19805C2100A02D17 /* GoogleMaps.bundle */; };
+		ABE7AEC21980660100A02D17 /* ozfeatures.txt in Resources */ = {isa = PBXBuildFile; fileRef = ABE7AEC11980660100A02D17 /* ozfeatures.txt */; };
+		ABE7AEC51980897E00A02D17 /* FRKAdoptionYearViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE7AEC41980897E00A02D17 /* FRKAdoptionYearViewController.m */; };
+		ABE7AEC81980C0BC00A02D17 /* FRKYearChoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE7AEC71980C0BC00A02D17 /* FRKYearChoiceViewController.m */; };
+		ABE7AECB1980DCB700A02D17 /* FRKAdoption.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE7AECA1980DCB700A02D17 /* FRKAdoption.m */; };
+		ABE7AECF1980DDFA00A02D17 /* FRKAdoptionConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE7AECE1980DDFA00A02D17 /* FRKAdoptionConfirmViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AB847D9D197F0B40005E82E5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AB847D6F197F0B3F005E82E5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AB847D76197F0B3F005E82E5;
+			remoteInfo = Adopt4K;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		AB3284FF198460CE0065B17A /* Adopt4K.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Adopt4K.xcdatamodel; sourceTree = "<group>"; };
+		AB328504198473730065B17A /* OZFeature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OZFeature.h; sourceTree = "<group>"; };
+		AB328505198473730065B17A /* OZFeature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OZFeature.m; sourceTree = "<group>"; };
+		AB45AD8919862321008C4E70 /* FRKOZListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRKOZListTableViewController.h; sourceTree = "<group>"; };
+		AB45AD8A19862321008C4E70 /* FRKOZListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRKOZListTableViewController.m; sourceTree = "<group>"; };
+		AB45AD8C1986334C008C4E70 /* FRKOZDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRKOZDetailsViewController.h; sourceTree = "<group>"; };
+		AB45AD8D1986334C008C4E70 /* FRKOZDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRKOZDetailsViewController.m; sourceTree = "<group>"; };
+		AB847D77197F0B3F005E82E5 /* Adopt4K.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Adopt4K.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB847D7A197F0B3F005E82E5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		AB847D7C197F0B3F005E82E5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		AB847D7E197F0B3F005E82E5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		AB847D82197F0B3F005E82E5 /* Adopt4K-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Adopt4K-Info.plist"; sourceTree = "<group>"; };
+		AB847D84197F0B3F005E82E5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		AB847D86197F0B3F005E82E5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AB847D88197F0B3F005E82E5 /* Adopt4K-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Adopt4K-Prefix.pch"; sourceTree = "<group>"; };
+		AB847D89197F0B3F005E82E5 /* FRKAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FRKAppDelegate.h; sourceTree = "<group>"; };
+		AB847D8A197F0B3F005E82E5 /* FRKAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FRKAppDelegate.m; sourceTree = "<group>"; };
+		AB847D8D197F0B3F005E82E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AB847D8F197F0B3F005E82E5 /* FRKViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FRKViewController.h; sourceTree = "<group>"; };
+		AB847D90197F0B3F005E82E5 /* FRKViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FRKViewController.m; sourceTree = "<group>"; };
+		AB847D92197F0B3F005E82E5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		AB847D98197F0B40005E82E5 /* Adopt4KTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Adopt4KTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB847D99197F0B40005E82E5 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		AB847DA1197F0B40005E82E5 /* Adopt4KTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Adopt4KTests-Info.plist"; sourceTree = "<group>"; };
+		AB847DA3197F0B40005E82E5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		AB847DA5197F0B40005E82E5 /* Adopt4KTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Adopt4KTests.m; sourceTree = "<group>"; };
+		AB8480F4197F0E78005E82E5 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		AB8480F5197F0E78005E82E5 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		AB8480F6197F0E78005E82E5 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		AB8480F7197F0E78005E82E5 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		AB8480F8197F0E78005E82E5 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		AB8480F9197F0E78005E82E5 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		AB8480FA197F0E78005E82E5 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		AB8480FC197F0E78005E82E5 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		AB8480FD197F0E78005E82E5 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		AB8480FE197F0E78005E82E5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		AB8480FF197F0E78005E82E5 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		ABCB81F71984F4700081DC99 /* Adoption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Adoption.h; sourceTree = "<group>"; };
+		ABCB81F81984F4700081DC99 /* Adoption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Adoption.m; sourceTree = "<group>"; };
+		ABE7AEA619803F1700A02D17 /* FRKUserProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FRKUserProfile.h; path = Adopt4K/FRKUserProfile.h; sourceTree = "<group>"; };
+		ABE7AEA719803F1700A02D17 /* FRKUserProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FRKUserProfile.m; path = Adopt4K/FRKUserProfile.m; sourceTree = "<group>"; };
+		ABE7AEAC1980541F00A02D17 /* FRKOZFeature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FRKOZFeature.h; path = Adopt4K/FRKOZFeature.h; sourceTree = "<group>"; };
+		ABE7AEAD1980541F00A02D17 /* FRKOZFeature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FRKOZFeature.m; path = Adopt4K/FRKOZFeature.m; sourceTree = "<group>"; };
+		ABE7AEB01980575400A02D17 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		ABE7AEB719805A7600A02D17 /* FRKAdoptionOZViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRKAdoptionOZViewController.h; sourceTree = "<group>"; };
+		ABE7AEB819805A7600A02D17 /* FRKAdoptionOZViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRKAdoptionOZViewController.m; sourceTree = "<group>"; };
+		ABE7AEBA19805B8100A02D17 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
+		ABE7AEBF19805C2100A02D17 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GoogleMaps.bundle; sourceTree = "<group>"; };
+		ABE7AEC11980660100A02D17 /* ozfeatures.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ozfeatures.txt; sourceTree = "<group>"; };
+		ABE7AEC31980897E00A02D17 /* FRKAdoptionYearViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRKAdoptionYearViewController.h; sourceTree = "<group>"; };
+		ABE7AEC41980897E00A02D17 /* FRKAdoptionYearViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRKAdoptionYearViewController.m; sourceTree = "<group>"; };
+		ABE7AEC61980C0BC00A02D17 /* FRKYearChoiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRKYearChoiceViewController.h; sourceTree = "<group>"; };
+		ABE7AEC71980C0BC00A02D17 /* FRKYearChoiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRKYearChoiceViewController.m; sourceTree = "<group>"; };
+		ABE7AEC91980DCB700A02D17 /* FRKAdoption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FRKAdoption.h; path = Adopt4K/FRKAdoption.h; sourceTree = "<group>"; };
+		ABE7AECA1980DCB700A02D17 /* FRKAdoption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FRKAdoption.m; path = Adopt4K/FRKAdoption.m; sourceTree = "<group>"; };
+		ABE7AECD1980DDFA00A02D17 /* FRKAdoptionConfirmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRKAdoptionConfirmViewController.h; sourceTree = "<group>"; };
+		ABE7AECE1980DDFA00A02D17 /* FRKAdoptionConfirmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRKAdoptionConfirmViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AB847D74197F0B3F005E82E5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ABE7AEB11980575400A02D17 /* libicucore.dylib in Frameworks */,
+				AB848108197F0E78005E82E5 /* libz.dylib in Frameworks */,
+				AB848100197F0E78005E82E5 /* AVFoundation.framework in Frameworks */,
+				AB848101197F0E78005E82E5 /* CoreData.framework in Frameworks */,
+				AB848102197F0E78005E82E5 /* CoreLocation.framework in Frameworks */,
+				AB848103197F0E78005E82E5 /* CoreText.framework in Frameworks */,
+				AB848104197F0E78005E82E5 /* GLKit.framework in Frameworks */,
+				AB848105197F0E78005E82E5 /* ImageIO.framework in Frameworks */,
+				AB848106197F0E78005E82E5 /* libc++.dylib in Frameworks */,
+				AB848109197F0E78005E82E5 /* OpenGLES.framework in Frameworks */,
+				AB84810A197F0E78005E82E5 /* QuartzCore.framework in Frameworks */,
+				AB84810B197F0E78005E82E5 /* SystemConfiguration.framework in Frameworks */,
+				AB847D7D197F0B3F005E82E5 /* CoreGraphics.framework in Frameworks */,
+				AB847D7F197F0B3F005E82E5 /* UIKit.framework in Frameworks */,
+				ABE7AEBB19805B8100A02D17 /* GoogleMaps.framework in Frameworks */,
+				AB847D7B197F0B3F005E82E5 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AB847D95197F0B40005E82E5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB847D9A197F0B40005E82E5 /* XCTest.framework in Frameworks */,
+				AB847D9C197F0B40005E82E5 /* UIKit.framework in Frameworks */,
+				AB847D9B197F0B40005E82E5 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AB847D6E197F0B3F005E82E5 = {
+			isa = PBXGroup;
+			children = (
+				ABE7AECC1980DCC400A02D17 /* DataObject */,
+				AB847D80197F0B3F005E82E5 /* Adopt4K */,
+				AB847D9F197F0B40005E82E5 /* Adopt4KTests */,
+				AB847D79197F0B3F005E82E5 /* Frameworks */,
+				AB847D78197F0B3F005E82E5 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AB847D78197F0B3F005E82E5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AB847D77197F0B3F005E82E5 /* Adopt4K.app */,
+				AB847D98197F0B40005E82E5 /* Adopt4KTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AB847D79197F0B3F005E82E5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ABE7AEBE19805C2100A02D17 /* Resources */,
+				ABE7AEBA19805B8100A02D17 /* GoogleMaps.framework */,
+				ABE7AEB01980575400A02D17 /* libicucore.dylib */,
+				AB8480F4197F0E78005E82E5 /* AVFoundation.framework */,
+				AB8480F5197F0E78005E82E5 /* CoreData.framework */,
+				AB8480F6197F0E78005E82E5 /* CoreLocation.framework */,
+				AB8480F7197F0E78005E82E5 /* CoreText.framework */,
+				AB8480F8197F0E78005E82E5 /* GLKit.framework */,
+				AB8480F9197F0E78005E82E5 /* ImageIO.framework */,
+				AB8480FA197F0E78005E82E5 /* libc++.dylib */,
+				AB8480FC197F0E78005E82E5 /* libz.dylib */,
+				AB8480FD197F0E78005E82E5 /* OpenGLES.framework */,
+				AB8480FE197F0E78005E82E5 /* QuartzCore.framework */,
+				AB8480FF197F0E78005E82E5 /* SystemConfiguration.framework */,
+				AB847D7A197F0B3F005E82E5 /* Foundation.framework */,
+				AB847D7C197F0B3F005E82E5 /* CoreGraphics.framework */,
+				AB847D7E197F0B3F005E82E5 /* UIKit.framework */,
+				AB847D99197F0B40005E82E5 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AB847D80197F0B3F005E82E5 /* Adopt4K */ = {
+			isa = PBXGroup;
+			children = (
+				ABE7AEC11980660100A02D17 /* ozfeatures.txt */,
+				AB847D89197F0B3F005E82E5 /* FRKAppDelegate.h */,
+				AB847D8A197F0B3F005E82E5 /* FRKAppDelegate.m */,
+				AB847D8C197F0B3F005E82E5 /* Main.storyboard */,
+				AB847D8F197F0B3F005E82E5 /* FRKViewController.h */,
+				AB847D90197F0B3F005E82E5 /* FRKViewController.m */,
+				AB847D92197F0B3F005E82E5 /* Images.xcassets */,
+				AB847D81197F0B3F005E82E5 /* Supporting Files */,
+				ABE7AEB719805A7600A02D17 /* FRKAdoptionOZViewController.h */,
+				ABE7AEB819805A7600A02D17 /* FRKAdoptionOZViewController.m */,
+				ABE7AEC31980897E00A02D17 /* FRKAdoptionYearViewController.h */,
+				ABE7AEC41980897E00A02D17 /* FRKAdoptionYearViewController.m */,
+				ABE7AEC61980C0BC00A02D17 /* FRKYearChoiceViewController.h */,
+				ABE7AEC71980C0BC00A02D17 /* FRKYearChoiceViewController.m */,
+				ABE7AECD1980DDFA00A02D17 /* FRKAdoptionConfirmViewController.h */,
+				ABE7AECE1980DDFA00A02D17 /* FRKAdoptionConfirmViewController.m */,
+				AB45AD8919862321008C4E70 /* FRKOZListTableViewController.h */,
+				AB45AD8A19862321008C4E70 /* FRKOZListTableViewController.m */,
+				AB45AD8C1986334C008C4E70 /* FRKOZDetailsViewController.h */,
+				AB45AD8D1986334C008C4E70 /* FRKOZDetailsViewController.m */,
+			);
+			path = Adopt4K;
+			sourceTree = "<group>";
+		};
+		AB847D81197F0B3F005E82E5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AB847D82197F0B3F005E82E5 /* Adopt4K-Info.plist */,
+				AB847D83197F0B3F005E82E5 /* InfoPlist.strings */,
+				AB847D86197F0B3F005E82E5 /* main.m */,
+				AB847D88197F0B3F005E82E5 /* Adopt4K-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AB847D9F197F0B40005E82E5 /* Adopt4KTests */ = {
+			isa = PBXGroup;
+			children = (
+				AB847DA5197F0B40005E82E5 /* Adopt4KTests.m */,
+				AB847DA0197F0B40005E82E5 /* Supporting Files */,
+			);
+			path = Adopt4KTests;
+			sourceTree = "<group>";
+		};
+		AB847DA0197F0B40005E82E5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AB847DA1197F0B40005E82E5 /* Adopt4KTests-Info.plist */,
+				AB847DA2197F0B40005E82E5 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		ABE7AEBE19805C2100A02D17 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				ABE7AEBF19805C2100A02D17 /* GoogleMaps.bundle */,
+			);
+			name = Resources;
+			path = GoogleMaps.framework/Resources;
+			sourceTree = "<group>";
+		};
+		ABE7AECC1980DCC400A02D17 /* DataObject */ = {
+			isa = PBXGroup;
+			children = (
+				ABE7AEAC1980541F00A02D17 /* FRKOZFeature.h */,
+				ABE7AEA619803F1700A02D17 /* FRKUserProfile.h */,
+				ABE7AEA719803F1700A02D17 /* FRKUserProfile.m */,
+				ABE7AEAD1980541F00A02D17 /* FRKOZFeature.m */,
+				ABE7AEC91980DCB700A02D17 /* FRKAdoption.h */,
+				ABE7AECA1980DCB700A02D17 /* FRKAdoption.m */,
+				AB3284FE198460CE0065B17A /* Adopt4K.xcdatamodeld */,
+				ABCB81F71984F4700081DC99 /* Adoption.h */,
+				ABCB81F81984F4700081DC99 /* Adoption.m */,
+				AB328504198473730065B17A /* OZFeature.h */,
+				AB328505198473730065B17A /* OZFeature.m */,
+			);
+			name = DataObject;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AB847D76197F0B3F005E82E5 /* Adopt4K */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AB847DA9197F0B40005E82E5 /* Build configuration list for PBXNativeTarget "Adopt4K" */;
+			buildPhases = (
+				AB847D73197F0B3F005E82E5 /* Sources */,
+				AB847D74197F0B3F005E82E5 /* Frameworks */,
+				AB847D75197F0B3F005E82E5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Adopt4K;
+			productName = Adopt4K;
+			productReference = AB847D77197F0B3F005E82E5 /* Adopt4K.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AB847D97197F0B40005E82E5 /* Adopt4KTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AB847DAC197F0B40005E82E5 /* Build configuration list for PBXNativeTarget "Adopt4KTests" */;
+			buildPhases = (
+				AB847D94197F0B40005E82E5 /* Sources */,
+				AB847D95197F0B40005E82E5 /* Frameworks */,
+				AB847D96197F0B40005E82E5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AB847D9E197F0B40005E82E5 /* PBXTargetDependency */,
+			);
+			name = Adopt4KTests;
+			productName = Adopt4KTests;
+			productReference = AB847D98197F0B40005E82E5 /* Adopt4KTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AB847D6F197F0B3F005E82E5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = FRK;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = 4K;
+				TargetAttributes = {
+					AB847D97197F0B40005E82E5 = {
+						TestTargetID = AB847D76197F0B3F005E82E5;
+					};
+				};
+			};
+			buildConfigurationList = AB847D72197F0B3F005E82E5 /* Build configuration list for PBXProject "Adopt4K" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				ar,
+				ca,
+				cs,
+				da,
+				de,
+				el,
+				en_GB,
+				es,
+				fi,
+				fr,
+				he,
+				hr,
+				hu,
+				id,
+				it,
+				ja,
+				ko,
+				ms,
+				nl,
+				no,
+				pl,
+				pt,
+				pt_PT,
+				ro,
+				ru,
+				sk,
+				sv,
+				th,
+				tr,
+				uk,
+				vi,
+				zh_CN,
+				zh_TW,
+			);
+			mainGroup = AB847D6E197F0B3F005E82E5;
+			productRefGroup = AB847D78197F0B3F005E82E5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AB847D76197F0B3F005E82E5 /* Adopt4K */,
+				AB847D97197F0B40005E82E5 /* Adopt4KTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AB847D75197F0B3F005E82E5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB847D93197F0B3F005E82E5 /* Images.xcassets in Resources */,
+				AB847D85197F0B3F005E82E5 /* InfoPlist.strings in Resources */,
+				AB847D8E197F0B3F005E82E5 /* Main.storyboard in Resources */,
+				ABE7AEC21980660100A02D17 /* ozfeatures.txt in Resources */,
+				ABE7AEC019805C2100A02D17 /* GoogleMaps.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AB847D96197F0B40005E82E5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB847DA4197F0B40005E82E5 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AB847D73197F0B3F005E82E5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ABE7AECB1980DCB700A02D17 /* FRKAdoption.m in Sources */,
+				AB847D91197F0B3F005E82E5 /* FRKViewController.m in Sources */,
+				ABE7AEAE1980541F00A02D17 /* FRKOZFeature.m in Sources */,
+				ABE7AECF1980DDFA00A02D17 /* FRKAdoptionConfirmViewController.m in Sources */,
+				AB328506198473730065B17A /* OZFeature.m in Sources */,
+				AB328500198460CE0065B17A /* Adopt4K.xcdatamodeld in Sources */,
+				ABE7AEB919805A7600A02D17 /* FRKAdoptionOZViewController.m in Sources */,
+				AB847D8B197F0B3F005E82E5 /* FRKAppDelegate.m in Sources */,
+				ABE7AEA819803F1700A02D17 /* FRKUserProfile.m in Sources */,
+				AB847D87197F0B3F005E82E5 /* main.m in Sources */,
+				AB45AD8E1986334C008C4E70 /* FRKOZDetailsViewController.m in Sources */,
+				AB45AD8B19862321008C4E70 /* FRKOZListTableViewController.m in Sources */,
+				ABCB81F91984F4700081DC99 /* Adoption.m in Sources */,
+				ABE7AEC81980C0BC00A02D17 /* FRKYearChoiceViewController.m in Sources */,
+				ABE7AEC51980897E00A02D17 /* FRKAdoptionYearViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AB847D94197F0B40005E82E5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB847DA6197F0B40005E82E5 /* Adopt4KTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AB847D9E197F0B40005E82E5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AB847D76197F0B3F005E82E5 /* Adopt4K */;
+			targetProxy = AB847D9D197F0B40005E82E5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		AB847D83197F0B3F005E82E5 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AB847D84197F0B3F005E82E5 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		AB847D8C197F0B3F005E82E5 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AB847D8D197F0B3F005E82E5 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		AB847DA2197F0B40005E82E5 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AB847DA3197F0B40005E82E5 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AB847DA7197F0B40005E82E5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		AB847DA8197F0B40005E82E5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AB847DAA197F0B40005E82E5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/mkang/Downloads/GoogleMaps-iOS-1.8.1",
+					"/Users/mkang/Downloads/GoogleMaps-iOS-1.8.1/GoogleMapsSDKDemos",
+					"$(PROJECT_DIR)/GoogleMaps-iOS-1.8.1",
+					"$(PROJECT_DIR)/GoogleMaps-iOS-1.8.1/GoogleMapsSDKDemos",
+					"$(PROJECT_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Adopt4K/Adopt4K-Prefix.pch";
+				INFOPLIST_FILE = "Adopt4K/Adopt4K-Info.plist";
+				New_Setting = "";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		AB847DAB197F0B40005E82E5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/mkang/Downloads/GoogleMaps-iOS-1.8.1",
+					"/Users/mkang/Downloads/GoogleMaps-iOS-1.8.1/GoogleMapsSDKDemos",
+					"$(PROJECT_DIR)/GoogleMaps-iOS-1.8.1",
+					"$(PROJECT_DIR)/GoogleMaps-iOS-1.8.1/GoogleMapsSDKDemos",
+					"$(PROJECT_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Adopt4K/Adopt4K-Prefix.pch";
+				INFOPLIST_FILE = "Adopt4K/Adopt4K-Info.plist";
+				New_Setting = "";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		AB847DAD197F0B40005E82E5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Adopt4K.app/Adopt4K";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Adopt4K/Adopt4K-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Adopt4KTests/Adopt4KTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		AB847DAE197F0B40005E82E5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Adopt4K.app/Adopt4K";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Adopt4K/Adopt4K-Prefix.pch";
+				INFOPLIST_FILE = "Adopt4KTests/Adopt4KTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AB847D72197F0B3F005E82E5 /* Build configuration list for PBXProject "Adopt4K" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AB847DA7197F0B40005E82E5 /* Debug */,
+				AB847DA8197F0B40005E82E5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AB847DA9197F0B40005E82E5 /* Build configuration list for PBXNativeTarget "Adopt4K" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AB847DAA197F0B40005E82E5 /* Debug */,
+				AB847DAB197F0B40005E82E5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AB847DAC197F0B40005E82E5 /* Build configuration list for PBXNativeTarget "Adopt4KTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AB847DAD197F0B40005E82E5 /* Debug */,
+				AB847DAE197F0B40005E82E5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		AB3284FE198460CE0065B17A /* Adopt4K.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				AB3284FF198460CE0065B17A /* Adopt4K.xcdatamodel */,
+			);
+			currentVersion = AB3284FF198460CE0065B17A /* Adopt4K.xcdatamodel */;
+			path = Adopt4K.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = AB847D6F197F0B3F005E82E5 /* Project object */;
+}
