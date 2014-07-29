@@ -114,8 +114,7 @@
     }
     
     
-    double currMaxRadiusX;
-    double currCenterX;
+    double currMaxRadiusX = 0.0;
     NSArray *firstLevel = feature.polygons;
     NSLog(@"first level: %@", firstLevel);
     
