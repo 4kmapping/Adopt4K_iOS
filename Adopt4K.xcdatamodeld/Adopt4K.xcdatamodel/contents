@@ -19,8 +19,14 @@
         <attribute name="wid" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="zoneName" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="Userprofile" representedClassName="Userprofile" syncable="YES">
+        <attribute name="appkey" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="displayName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
         <element name="Adoption" positionX="-36" positionY="27" width="128" height="150"/>
-        <element name="OZFeature" positionX="-9" positionY="45" width="128" height="165"/>
+        <element name="OZFeature" positionX="-9" positionY="45" width="128" height="28"/>
+        <element name="Userprofile" positionX="-18" positionY="99" width="128" height="88"/>
     </elements>
 </model>
