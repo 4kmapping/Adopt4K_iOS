@@ -20,7 +20,6 @@
 
 - (void)initOZFeatureCoreDataFromFile;
 
-- (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
 
 @end

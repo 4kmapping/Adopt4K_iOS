@@ -8,9 +8,23 @@
 
 #import <UIKit/UIKit.h>
 #import "Adoption.h"
+#import <GoogleMaps/GoogleMaps.h>
 
 @interface FRKOZDetailsViewController : UIViewController
+{
+    
+}
 
 @property Adoption *selectedOZ;
+
+@property (weak,nonatomic) IBOutlet UILabel *usernameLabel;
+@property (weak,nonatomic) IBOutlet UILabel *oznameLabel;
+@property (weak,nonatomic) IBOutlet UILabel *yearLabel;
+
+
+- (IBAction)deleteOZ;
+
+- (void)addPolygonsWithCurrentAdoption;
+
 
 @end
