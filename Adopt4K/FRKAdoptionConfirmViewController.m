@@ -9,6 +9,7 @@
 #import "FRKAdoptionConfirmViewController.h"
 #import "FRKAppDelegate.h"
 #import "FRKAdoptionOZViewController.h"
+#import "KSConnManager.h"
 
 
 @interface FRKAdoptionConfirmViewController ()
@@ -67,7 +68,7 @@
     NSManagedObjectContext *context = [appDelegate managedObjectContext];
     
     
-    
+    // Save to local db.
     Adoption *adoption = [NSEntityDescription
                           insertNewObjectForEntityForName:@"Adoption"
                           inManagedObjectContext:context];
@@ -78,10 +79,9 @@
     adoption.zoneName = self.selectedFeature.zoneName;
     NSLog(@"zoneName: %@ - %@", adoption.zoneName, self.selectedFeature.zoneName);
     adoption.countryName = self.selectedFeature.countryName;
-
-    // TODO: Save to Server
-    // ===
+    adoption.serverURL = self.serverURL;
     
+    NSLog(@"Server URL in confirmation view: %@", self.serverURL);
     
     NSError *savingError = nil;
     
@@ -95,6 +95,10 @@
         NSLog(@"Failed to save the context. Error = %@", savingError);
     }
     
+    // TODO: Save to Server
+    // ===
+    KSConnManager *conn = [KSConnManager getInstance];
+    [conn confirmAdoption:adoption];
     
     
 }

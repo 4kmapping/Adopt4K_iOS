@@ -9,11 +9,13 @@
 
 #import "FRKAdoptionOZViewController.h"
 #import "FRKAdoptionYearViewController.h"
+#import "KSConnManager.h"
 
 @interface FRKAdoptionOZViewController ()
 {
     // Holds OZ features
     NSMutableDictionary *ozFeatures;
+    NSString *serverURL; // server URL for the created adoption entry in server.
     
 
     GMSMapView *gmView;
@@ -226,13 +228,33 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"adoptionYear"])
+    if ([[segue identifier] isEqualToString:@"adoptionYearSegue"])
     {
+        
+        
+        // Lock the selected oz in server
+        KSConnManager *conn = [KSConnManager getInstance];
+        
+        if ([conn checkAdoptionWidLock:currFeature.wid]) // Locked
+        {
+            
+#warning Show message to user, and go back to selection screen.
+            
+        }
+        else
+        {
+            serverURL = [conn lockAdoption:currFeature.wid];
+        }
+        
+        
+        
         FRKAdoptionYearViewController *vc = [segue destinationViewController];
         
         [vc setSelectedFeature:currFeature];
         [vc setSelectedTargetYear:currTargetYear];
         [vc.view addSubview:gmView];
+        [vc setServerURL:[serverURL copy]];
+        NSLog(@"serverURL in prepareForSegue: %@", [vc serverURL]);
     }
     
 }

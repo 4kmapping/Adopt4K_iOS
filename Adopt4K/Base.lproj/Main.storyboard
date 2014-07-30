@@ -268,7 +268,7 @@
                                     <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="ac8-Wm-FWB" kind="push" identifier="adoptionYear" id="XuJ-T3-wxu"/>
+                                    <segue destination="ac8-Wm-FWB" kind="push" identifier="adoptionYearSegue" id="XuJ-T3-wxu"/>
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Omega Zone" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TLT-Pq-7Ii">

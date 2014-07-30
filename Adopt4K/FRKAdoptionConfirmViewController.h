@@ -14,6 +14,7 @@
 
 @property (weak,nonatomic) OZFeature *selectedFeature;
 @property int targetYear;
+@property (weak,nonatomic) NSString *serverURL;
 
 @property (weak,nonatomic) IBOutlet UILabel *zoneNameLabel;
 @property (weak,nonatomic) IBOutlet UILabel *yearLabel;

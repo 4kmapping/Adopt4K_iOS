@@ -18,5 +18,6 @@
 @dynamic zoneName;
 @dynamic countryName;
 @dynamic year;
+@dynamic serverURL;
 
 @end

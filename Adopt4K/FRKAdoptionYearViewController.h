@@ -16,6 +16,7 @@
 @property (weak,nonatomic) OZFeature *selectedFeature;
 @property int selectedTargetYear;
 @property (weak,nonatomic) GMSMapView *gmView;
+@property (weak,nonatomic) NSString *serverURL;
 
 
 @property (weak,nonatomic) IBOutlet UILabel *ozidLabel;

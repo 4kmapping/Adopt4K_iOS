@@ -19,5 +19,6 @@
 @property (nonatomic, retain) NSString * zoneName;
 @property (nonatomic, retain) NSString * countryName;
 @property (nonatomic, retain) NSNumber * year;
+@property (nonatomic, retain) NSString *serverURL;
 
 @end
