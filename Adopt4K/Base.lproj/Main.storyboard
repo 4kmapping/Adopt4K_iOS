@@ -374,7 +374,7 @@
                                     <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="vXZ-lx-hvc" kind="modal" identifier="cancel" modalTransitionStyle="crossDissolve" id="rce-Rl-J3q"/>
+                                    <segue destination="vXZ-lx-hvc" kind="modal" identifier="cancelAdoptionYearSegue" modalTransitionStyle="crossDissolve" id="rce-Rl-J3q"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ga3-Z8-NKB">
@@ -399,7 +399,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wFm-EB-tDY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2117" y="-912"/>
+            <point key="canvasLocation" x="2134" y="-917"/>
         </scene>
         <!--List Table View Controller - Adopted Omega Zones-->
         <scene sceneID="uaW-Fo-t5I">
@@ -653,6 +653,9 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="vXZ-lx-hvc" kind="modal" identifier="cancelAdoptionSegue" modalTransitionStyle="crossDissolve" id="WfU-9t-3Zu"/>
+                                </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Edm-eG-3Cg">
                                 <rect key="frame" x="20" y="94" width="280" height="25"/>
@@ -748,7 +751,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="HaV-XU-hyM"/>
+        <segue reference="rce-Rl-J3q"/>
         <segue reference="URV-X8-T7B"/>
     </inferredMetricsTieBreakers>
 </document>

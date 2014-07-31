@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB16D5DF19872C850065E1C0 /* FRKUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB16D5DE19872C850065E1C0 /* FRKUserProfileViewController.m */; };
+		AB16D5E219872FEC0065E1C0 /* Userprofile.m in Sources */ = {isa = PBXBuildFile; fileRef = AB16D5E119872FEC0065E1C0 /* Userprofile.m */; };
+		AB16D5E51987347E0065E1C0 /* FRKUserprofileEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB16D5E41987347E0065E1C0 /* FRKUserprofileEditViewController.m */; };
 		AB328500198460CE0065B17A /* Adopt4K.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AB3284FE198460CE0065B17A /* Adopt4K.xcdatamodeld */; };
 		AB328506198473730065B17A /* OZFeature.m in Sources */ = {isa = PBXBuildFile; fileRef = AB328505198473730065B17A /* OZFeature.m */; };
 		AB45AD8B19862321008C4E70 /* FRKOZListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB45AD8A19862321008C4E70 /* FRKOZListTableViewController.m */; };
@@ -36,6 +39,7 @@
 		AB848109197F0E78005E82E5 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB8480FD197F0E78005E82E5 /* OpenGLES.framework */; };
 		AB84810A197F0E78005E82E5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB8480FE197F0E78005E82E5 /* QuartzCore.framework */; };
 		AB84810B197F0E78005E82E5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB8480FF197F0E78005E82E5 /* SystemConfiguration.framework */; };
+		AB94620B19884E900061D476 /* KSConnManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AB94620A19884E900061D476 /* KSConnManager.m */; };
 		ABCB81F91984F4700081DC99 /* Adoption.m in Sources */ = {isa = PBXBuildFile; fileRef = ABCB81F81984F4700081DC99 /* Adoption.m */; };
 		ABE7AEA819803F1700A02D17 /* FRKUserProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE7AEA719803F1700A02D17 /* FRKUserProfile.m */; };
 		ABE7AEAE1980541F00A02D17 /* FRKOZFeature.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE7AEAD1980541F00A02D17 /* FRKOZFeature.m */; };
@@ -61,6 +65,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AB16D5DD19872C850065E1C0 /* FRKUserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRKUserProfileViewController.h; sourceTree = "<group>"; };
+		AB16D5DE19872C850065E1C0 /* FRKUserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRKUserProfileViewController.m; sourceTree = "<group>"; };
+		AB16D5E019872FEC0065E1C0 /* Userprofile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Userprofile.h; sourceTree = "<group>"; };
+		AB16D5E119872FEC0065E1C0 /* Userprofile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Userprofile.m; sourceTree = "<group>"; };
+		AB16D5E31987347E0065E1C0 /* FRKUserprofileEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRKUserprofileEditViewController.h; sourceTree = "<group>"; };
+		AB16D5E41987347E0065E1C0 /* FRKUserprofileEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRKUserprofileEditViewController.m; sourceTree = "<group>"; };
 		AB3284FF198460CE0065B17A /* Adopt4K.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Adopt4K.xcdatamodel; sourceTree = "<group>"; };
 		AB328504198473730065B17A /* OZFeature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OZFeature.h; sourceTree = "<group>"; };
 		AB328505198473730065B17A /* OZFeature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OZFeature.m; sourceTree = "<group>"; };
@@ -98,6 +108,8 @@
 		AB8480FD197F0E78005E82E5 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		AB8480FE197F0E78005E82E5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		AB8480FF197F0E78005E82E5 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		AB94620919884E900061D476 /* KSConnManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSConnManager.h; path = Adopt4K/KSConnManager.h; sourceTree = "<group>"; };
+		AB94620A19884E900061D476 /* KSConnManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KSConnManager.m; path = Adopt4K/KSConnManager.m; sourceTree = "<group>"; };
 		ABCB81F71984F4700081DC99 /* Adoption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Adoption.h; sourceTree = "<group>"; };
 		ABCB81F81984F4700081DC99 /* Adoption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Adoption.m; sourceTree = "<group>"; };
 		ABE7AEA619803F1700A02D17 /* FRKUserProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FRKUserProfile.h; path = Adopt4K/FRKUserProfile.h; sourceTree = "<group>"; };
@@ -160,6 +172,7 @@
 		AB847D6E197F0B3F005E82E5 = {
 			isa = PBXGroup;
 			children = (
+				AB94620519884BF20061D476 /* ServerConnect */,
 				ABE7AECC1980DCC400A02D17 /* DataObject */,
 				AB847D80197F0B3F005E82E5 /* Adopt4K */,
 				AB847D9F197F0B40005E82E5 /* Adopt4KTests */,
@@ -225,6 +238,10 @@
 				AB45AD8A19862321008C4E70 /* FRKOZListTableViewController.m */,
 				AB45AD8C1986334C008C4E70 /* FRKOZDetailsViewController.h */,
 				AB45AD8D1986334C008C4E70 /* FRKOZDetailsViewController.m */,
+				AB16D5DD19872C850065E1C0 /* FRKUserProfileViewController.h */,
+				AB16D5DE19872C850065E1C0 /* FRKUserProfileViewController.m */,
+				AB16D5E31987347E0065E1C0 /* FRKUserprofileEditViewController.h */,
+				AB16D5E41987347E0065E1C0 /* FRKUserprofileEditViewController.m */,
 			);
 			path = Adopt4K;
 			sourceTree = "<group>";
@@ -258,6 +275,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		AB94620519884BF20061D476 /* ServerConnect */ = {
+			isa = PBXGroup;
+			children = (
+				AB94620919884E900061D476 /* KSConnManager.h */,
+				AB94620A19884E900061D476 /* KSConnManager.m */,
+			);
+			name = ServerConnect;
+			sourceTree = "<group>";
+		};
 		ABE7AEBE19805C2100A02D17 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -270,6 +296,8 @@
 		ABE7AECC1980DCC400A02D17 /* DataObject */ = {
 			isa = PBXGroup;
 			children = (
+				AB16D5E019872FEC0065E1C0 /* Userprofile.h */,
+				AB16D5E119872FEC0065E1C0 /* Userprofile.m */,
 				ABE7AEAC1980541F00A02D17 /* FRKOZFeature.h */,
 				ABE7AEA619803F1700A02D17 /* FRKUserProfile.h */,
 				ABE7AEA719803F1700A02D17 /* FRKUserProfile.m */,
@@ -418,17 +446,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB94620B19884E900061D476 /* KSConnManager.m in Sources */,
 				ABE7AECB1980DCB700A02D17 /* FRKAdoption.m in Sources */,
 				AB847D91197F0B3F005E82E5 /* FRKViewController.m in Sources */,
 				ABE7AEAE1980541F00A02D17 /* FRKOZFeature.m in Sources */,
 				ABE7AECF1980DDFA00A02D17 /* FRKAdoptionConfirmViewController.m in Sources */,
 				AB328506198473730065B17A /* OZFeature.m in Sources */,
+				AB16D5E51987347E0065E1C0 /* FRKUserprofileEditViewController.m in Sources */,
 				AB328500198460CE0065B17A /* Adopt4K.xcdatamodeld in Sources */,
 				ABE7AEB919805A7600A02D17 /* FRKAdoptionOZViewController.m in Sources */,
 				AB847D8B197F0B3F005E82E5 /* FRKAppDelegate.m in Sources */,
 				ABE7AEA819803F1700A02D17 /* FRKUserProfile.m in Sources */,
 				AB847D87197F0B3F005E82E5 /* main.m in Sources */,
 				AB45AD8E1986334C008C4E70 /* FRKOZDetailsViewController.m in Sources */,
+				AB16D5E219872FEC0065E1C0 /* Userprofile.m in Sources */,
+				AB16D5DF19872C850065E1C0 /* FRKUserProfileViewController.m in Sources */,
 				AB45AD8B19862321008C4E70 /* FRKOZListTableViewController.m in Sources */,
 				ABCB81F91984F4700081DC99 /* Adoption.m in Sources */,
 				ABE7AEC81980C0BC00A02D17 /* FRKYearChoiceViewController.m in Sources */,

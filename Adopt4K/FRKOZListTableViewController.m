@@ -43,6 +43,27 @@
     
     // Initialized the adopted oz list from local db.
     // ===
+    [self loadAdoptedOZList];
+    
+    
+    // Set up a notification for refreshing adopted OZ list.
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(refresh)
+                                                 name:@"RefreshList"
+                                               object:nil];
+    
+}
+
+
+- (void)refresh
+{
+    [self loadAdoptedOZList];
+    [self.tableView reloadData];
+}
+
+
+- (void)loadAdoptedOZList
+{
     FRKAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     
     NSManagedObjectContext *context = [appDelegate managedObjectContext];
@@ -56,9 +77,8 @@
     
     NSError *error;
     adoptedOZList = [context executeFetchRequest:fetchRequest error:&error];
-    
-    
 }
+
 
 - (void)didReceiveMemoryWarning
 {

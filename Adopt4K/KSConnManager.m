@@ -140,11 +140,18 @@ static int timeoutSeconds = 7;
 }
 
 
-- (void)deleteAdoption:(Adoption *)adoption
+- (BOOL)deleteAdoption:(Adoption *)adoption
+{
+
+    return [self deleteAdoptionWithServerURL:adoption.serverURL];
+    
+}
+
+- (BOOL)deleteAdoptionWithServerURL:(NSString *)serverURL
 {
 
     NSMutableURLRequest *request =
-    [self prepareURLRequestWithURLString:adoption.serverURL
+    [self prepareURLRequestWithURLString:serverURL
                                   method:@"DELETE"
                                     data:nil];
     
@@ -155,11 +162,19 @@ static int timeoutSeconds = 7;
                                                  returningResponse:&responseCode
                                                              error:&error];
     
+    int statusCodeNumber = (int)[responseCode statusCode];
+    
     NSLog(@"syncing Adoption code is: %ld", (long)[responseCode statusCode]);
+    
+    if (statusCodeNumber >= 200 && statusCodeNumber < 300)
+    {
+        return true;
+    }
+    
+    return false;
     
     
 }
-
 
 
 - (NSMutableURLRequest *)prepareURLRequestWithURLString:(NSString *)urlStr

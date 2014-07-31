@@ -9,6 +9,7 @@
 #import "FRKAdoptionYearViewController.h"
 #import "FRKYearChoiceViewController.h"
 #import "FRKAdoptionConfirmViewController.h"
+#import "KSConnManager.h"
 
 @interface FRKAdoptionYearViewController ()
 {
@@ -68,6 +69,20 @@
         [vc setTargetYear:self.selectedTargetYear];
         [vc setServerURL:self.serverURL];
         NSLog(@"HERE, serverURL: %@", self.serverURL);
+    }
+    if ([[segue identifier] isEqualToString:@"cancelAdoptionYearSegue"])
+    {
+        // Delete Adoption lock in server side
+        KSConnManager *conn = [KSConnManager getInstance];
+        BOOL success = [conn deleteAdoptionWithServerURL:self.serverURL];
+        if (success)
+        {
+            NSLog(@"Successfully removed adoption lock for %@.", self.serverURL);
+        }
+        else
+        {
+            NSLog(@"Failed to remove adoption lock for %@.", self.serverURL);
+        }
     }
 }
 

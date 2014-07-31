@@ -149,7 +149,22 @@
         [self adoptionConfirmed];
         
     }
-    else // If Cancel is clicked.
+    else if([[segue identifier] isEqualToString:@"cancelAdoptionSegue"]) // If Cancel is clicked.
+    {
+        // Delete Adoption lock in server side
+        KSConnManager *conn = [KSConnManager getInstance];
+        BOOL success = [conn deleteAdoptionWithServerURL:self.serverURL];
+        if (success)
+        {
+            NSLog(@"Successfully removed adoption lock for %@.", self.serverURL);
+        }
+        else
+        {
+            NSLog(@"Failed to remove adoption lock for %@.", self.serverURL);
+        }
+        
+    }
+    else
     {
         //To nothing.
     }

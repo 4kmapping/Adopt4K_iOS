@@ -18,6 +18,8 @@
 - (BOOL)checkAdoptionWidLock:(NSString *)wid;
 - (NSString *)lockAdoption:(NSString *)wid;
 - (void)confirmAdoption:(Adoption *)adoption;
+- (BOOL)deleteAdoption:(Adoption *)adoption;
+- (BOOL)deleteAdoptionWithServerURL:(NSString *)serverURL;
 
 
 @end

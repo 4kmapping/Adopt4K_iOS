@@ -12,6 +12,7 @@
 
 @interface Adoption : NSManagedObject
 
+
 @property (nonatomic, retain) NSArray *polygons;
 @property (nonatomic, retain) NSDate * timestamp;
 @property (nonatomic, retain) NSString * userid;
@@ -21,4 +22,12 @@
 @property (nonatomic, retain) NSNumber * year;
 @property (nonatomic, retain) NSString *serverURL;
 
+
+- (BOOL)deleteFromCoreData;
+
+
 @end
+
+
+
+

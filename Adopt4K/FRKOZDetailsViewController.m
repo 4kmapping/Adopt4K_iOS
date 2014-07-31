@@ -9,6 +9,7 @@
 #import "FRKOZDetailsViewController.h"
 #import "FRKAppDelegate.h"
 #import "OZFeature.h"
+#import "KSConnManager.h"
 
 @interface FRKOZDetailsViewController ()
 {
@@ -221,9 +222,41 @@
 - (IBAction)deleteOZ
 {
     NSLog(@"Deleting oz: %@", selectedOZ.wid);
-#warning delete oz in server
     
-#warning delete in local db
+    KSConnManager *conn = [KSConnManager getInstance];
+    
+    BOOL success = [conn deleteAdoption:selectedOZ];
+    
+    if(success)
+    {
+        
+        FRKAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+        
+        NSManagedObjectContext *context = [appDelegate managedObjectContext];
+        
+        NSEntityDescription *entityDesc = [NSEntityDescription
+                                           entityForName:@"Adoption"
+                                           inManagedObjectContext:context];
+        
+        [context deleteObject:selectedOZ];
+        
+        NSError *savingError = nil;
+        [context save:&savingError];
+        NSLog(@"Failed to save the context. Error = %@", savingError);
+        
+        // Send a notification to refresh adoption list in prev screen.
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"RefreshList" object:nil];
+        
+        [self.navigationController popViewControllerAnimated:YES];
+        
+    }
+    else
+    {
+        // TODO: Inform user, log
+        NSLog(@"Error in deleting the current adoption (wid:%@) in server side",
+              selectedOZ.wid);
+        
+    }
     
     
 }
