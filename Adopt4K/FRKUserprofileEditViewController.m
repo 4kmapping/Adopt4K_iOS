@@ -167,6 +167,9 @@
         // Do nothing.
     }
     
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"RefreshUserprofile" object:nil];
+
+    
     [self.navigationController popToRootViewControllerAnimated:YES];
     
 }

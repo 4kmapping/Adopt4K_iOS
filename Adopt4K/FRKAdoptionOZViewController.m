@@ -231,21 +231,8 @@
     if ([[segue identifier] isEqualToString:@"adoptionYearSegue"])
     {
         
-        
-        // Lock the selected oz in server
         KSConnManager *conn = [KSConnManager getInstance];
-        
-        if ([conn checkAdoptionWidLock:currFeature.wid]) // Locked
-        {
-            
-#warning Show message to user, and go back to selection screen.
-            
-        }
-        else
-        {
-            serverURL = [conn lockAdoption:currFeature.wid];
-        }
-        
+        serverURL = [conn lockAdoption:currFeature.wid];
         
         
         FRKAdoptionYearViewController *vc = [segue destinationViewController];
@@ -253,11 +240,43 @@
         [vc setSelectedFeature:currFeature];
         [vc setSelectedTargetYear:currTargetYear];
         [vc.view addSubview:gmView];
-        [vc setServerURL:[serverURL copy]];
+        [vc setServerURL:serverURL];
         NSLog(@"serverURL in prepareForSegue: %@", [vc serverURL]);
     }
     
 }
+
+
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
+{
+    if ([identifier isEqualToString:@"adoptionYearSegue"])
+    {
+        // perform your computation to determine whether segue should occur
+        
+        KSConnManager *conn = [KSConnManager getInstance];
+        
+        BOOL segueShouldOccur = (![conn checkAdoptionWidLock:currFeature.wid]);
+        
+        if (!segueShouldOccur)
+        {
+            UIAlertView *notPermitted = [[UIAlertView alloc]
+                                         initWithTitle:@"Alert"
+                                         message:@"Please choose another Omega Zone."
+                                         delegate:nil
+                                         cancelButtonTitle:@"OK"
+                                         otherButtonTitles:nil];
+            // shows alert to user
+            [notPermitted show];
+            
+            return NO;
+        }
+    }
+    
+    // by default perform the segue transition
+    return YES;
+}
+
+
 
 
 - (IBAction)adoptOZ:(id)sender

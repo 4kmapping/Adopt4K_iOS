@@ -15,7 +15,5 @@
 @property (nonatomic, retain) IBOutlet UILabel *emailLabel;
 
 
-@property FRKUserProfile *userProfile;
-
 
 @end

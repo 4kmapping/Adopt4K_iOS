@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Userprofile.h"
 
 @interface FRKAppDelegate : UIResponder <UIApplicationDelegate>
 
@@ -16,6 +17,7 @@
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
 @property (strong,nonatomic) NSMutableDictionary *ozFeatures;
+@property (strong,nonatomic) Userprofile *userprofile;
 
 
 - (void)initOZFeatureCoreDataFromFile;

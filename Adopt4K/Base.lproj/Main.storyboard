@@ -48,7 +48,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="kZd-2x-SXY" kind="modal" modalTransitionStyle="crossDissolve" id="6ep-w9-1Sy"/>
+                                    <segue destination="kZd-2x-SXY" kind="modal" identifier="StartAdoptionSegue" modalTransitionStyle="crossDissolve" id="6ep-w9-1Sy"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZcY-I4-Agz" colorLabel="IBBuiltInLabel-Orange">
@@ -62,7 +62,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="d01-g5-Y0e" kind="modal" modalTransitionStyle="crossDissolve" id="YtC-vp-Z43"/>
+                                    <segue destination="d01-g5-Y0e" kind="modal" identifier="StartHistorySegue" modalTransitionStyle="crossDissolve" id="YtC-vp-Z43"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XXn-tY-Gpi" colorLabel="IBBuiltInLabel-Orange">
@@ -751,7 +751,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="rce-Rl-J3q"/>
-        <segue reference="URV-X8-T7B"/>
+        <segue reference="9q7-6T-Wlr"/>
+        <segue reference="6ep-w9-1Sy"/>
     </inferredMetricsTieBreakers>
 </document>

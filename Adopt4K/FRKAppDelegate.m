@@ -32,17 +32,76 @@
     
     // TODO: To create a sqlite with OZFeature
     // USE ONLY ONCE and COMMENT OUT
-    //[self initOZFeatureCoreDataFromFile];
-    
+    [self initOZFeatureCoreDataFromFile];
     
     
     //[self testOZFeatureCoreData];
+    
+    // load Userprofile
+    // ===
+    FRKAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    
+    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    
+    NSEntityDescription *entityDesc = [NSEntityDescription
+                                       entityForName:@"Userprofile"
+                                       inManagedObjectContext:context];
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    [fetchRequest setEntity:entityDesc];
+    
+    NSError *error;
+    NSArray *results = [context executeFetchRequest:fetchRequest error:&error];
+    
+    self.userprofile = nil;
+    
+    if ([results count] > 0)
+    {
+        self.userprofile = results[0];
+    }
+
+    // Set up a notification for refreshing adopted OZ list.
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(refreshUserprofile)
+                                                 name:@"RefreshUserprofile"
+                                               object:nil];
+    
     
     // For debugging purpose.
     NSLog(@"path:%@",[[NSBundle mainBundle]bundlePath]);
     
     return YES;
 }
+
+
+#pragma mark - Userprofile management.
+- (void)refreshUserprofile
+{
+    // load Userprofile
+    // ===
+    
+    NSManagedObjectContext *context = [self managedObjectContext];
+    
+    NSEntityDescription *entityDesc = [NSEntityDescription
+                                       entityForName:@"Userprofile"
+                                       inManagedObjectContext:context];
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    [fetchRequest setEntity:entityDesc];
+    
+    NSError *error;
+    NSArray *results = [context executeFetchRequest:fetchRequest error:&error];
+    
+    if ([results count] > 0)
+    {
+        self.userprofile = results[0];
+    }
+    
+    NSLog(@"Userprofile is refreshed in App Delegate.");
+    
+}
+
+
 							
 - (void)applicationWillResignActive:(UIApplication *)application
 {
