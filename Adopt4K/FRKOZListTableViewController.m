@@ -75,6 +75,12 @@
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     [fetchRequest setEntity:entityDesc];
     
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"timestamp"
+                                                                   ascending:NO];
+    NSArray *sortDescriptors = @[sortDescriptor];
+    [fetchRequest setSortDescriptors:sortDescriptors];
+    
+    
     NSError *error;
     adoptedOZList = [context executeFetchRequest:fetchRequest error:&error];
 }
@@ -107,9 +113,14 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ozCell" forIndexPath:indexPath];
     
+    
     Adoption *adoption = [adoptedOZList objectAtIndex:indexPath.row];
     NSLog(@"Adoption: %@, %@", adoption.wid, adoption.zoneName);
-    cell.textLabel.text = [NSString stringWithFormat:@"%@, %@", adoption.zoneName, adoption.countryName];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@, %@ By %d", adoption.zoneName, adoption.countryName, [adoption.year intValue]];
+    
+    cell.textLabel.font=[UIFont fontWithName:@"Arial" size:14];
+    cell.textLabel.numberOfLines = 2;
+    cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
     
     return cell;
 }

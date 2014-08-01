@@ -20,7 +20,8 @@
 @property (strong,nonatomic) Userprofile *userprofile;
 
 
-- (void)initOZFeatureCoreDataFromFile;
+- (BOOL)initOZFeatureCoreDataFromFile;
+- (BOOL)loadOZFeaturesFromJSON;
 
 - (NSURL *)applicationDocumentsDirectory;
 

@@ -32,7 +32,7 @@
     
     // TODO: To create a sqlite with OZFeature
     // USE ONLY ONCE and COMMENT OUT
-    [self initOZFeatureCoreDataFromFile];
+    [self loadOZFeaturesFromJSON];
     
     
     //[self testOZFeatureCoreData];
@@ -184,8 +184,24 @@
     
 }
 
-- (void)initOZFeatureCoreDataFromFile
+
+
+- (BOOL)initOZFeatureCoreDataFromFile
 {
+    // Fist Check if pre-poluated sqlite db exists.
+    
+    NSString* documentsPath =
+        [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+            NSUserDomainMask, YES) objectAtIndex:0];
+    
+    NSString* foofile = [documentsPath stringByAppendingPathComponent:@"Adopt4K.sqlite"];
+    BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:foofile];
+    
+    // IF EXISTS, SKIP the rest.
+    if(fileExists)
+    {
+        return false;
+    }
     
     // Make OZFeature List
 	// Read OZ features from a local file.
@@ -211,6 +227,9 @@
         NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data
                                                              options:0
                                                                error:&error];
+        
+        NSLog(@"ERROR IS: %@",error);
+        
         ozfeature = [NSEntityDescription
                        insertNewObjectForEntityForName:@"OZFeature"
                        inManagedObjectContext:[ self managedObjectContext]];
@@ -223,8 +242,6 @@
             NSDictionary *properties = [dict valueForKey:@"properties"];
             
             NSString *widKey = [properties valueForKey:@"WorldID"];
-            
-            
             
             NSString *polygonType = [[dict valueForKey:@"geometry"] valueForKey:@"type"];
             
@@ -259,6 +276,93 @@
         
     }
     
+    return true;
+    
+}
+
+
+- (BOOL)loadOZFeaturesFromJSON
+{
+    
+    // CHECK IF EXISTING SQLite DB Files. If So, skip the rest of the process.
+    NSString* documentsPath =
+    [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                         NSUserDomainMask, YES) objectAtIndex:0];
+    
+    NSString* foofile = [documentsPath stringByAppendingPathComponent:@"Adopt4K.sqlite"];
+    BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:foofile];
+    
+    if(fileExists)
+    {
+        NSLog(@"Adopt4K.sqlite already exists. Skip loading.");
+        return false;
+    }
+    
+    
+    // Load data by executing SQL statements.
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"all_ozfeatures_4_coredata"
+                                                           ofType:@"txt"];
+    
+    NSError *error;
+    NSCharacterSet *newlineCharSet = [NSCharacterSet newlineCharacterSet];
+    NSString* fileContents = [NSString stringWithContentsOfFile:filePath
+                                                       encoding:NSUTF8StringEncoding
+                                                          error:&error];
+    NSArray *lines = [fileContents componentsSeparatedByCharactersInSet:newlineCharSet];
+    NSLog(@"error: %@", error);
+    
+    for (int i=0;i<lines.count;i++)
+    {
+        NSString *line = lines[i];
+        
+        NSData *data = [line dataUsingEncoding:NSUTF8StringEncoding];
+        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data
+                                                             options:0
+                                                               error:&error];
+  
+        
+        NSLog(@"ERROR IS: %@",error);
+        
+        OZFeature *ozfeature = [NSEntityDescription
+                     insertNewObjectForEntityForName:@"OZFeature"
+                     inManagedObjectContext:[ self managedObjectContext]];
+        
+        
+        
+        if(dict != nil && ozfeature != nil)
+        {
+            
+            ozfeature.wid = [dict valueForKey:@"wid"];
+            ozfeature.area = [dict valueForKey:@"Shape_Area"];
+            ozfeature.zoneName = [dict valueForKey:@"zoneName"];
+            ozfeature.countryName = [dict valueForKey:@"countryName"];
+            ozfeature.center_x = [dict valueForKey:@"center_x"];
+            ozfeature.center_y = [dict valueForKey:@"center_y"];
+            ozfeature.polygonType = [dict valueForKey:@"polygonType"];
+            ozfeature.polygons = [dict valueForKey:@"polygons"];
+            
+            NSError *savingError = nil;
+            
+            if ([[self managedObjectContext] save:&savingError])
+            {
+                NSLog(@"Successfully saved the context.");
+            }
+            else
+            {
+                NSLog(@"Failed to save the context. Error = %@", savingError);
+            }
+            
+        }
+        else
+        {
+            NSLog(@"Failed to create the new ozfeature.");
+        }
+        
+    }
+    
+    
+    return true;
+    
 }
 
 
@@ -287,6 +391,7 @@
     }
     
 }
+
 
 #pragma mark - Core Data stack
 

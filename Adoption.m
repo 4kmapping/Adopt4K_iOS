@@ -20,4 +20,10 @@
 @dynamic year;
 @dynamic serverURL;
 
+- (void) awakeFromInsert
+{
+    [super awakeFromInsert];
+    [self setTimestamp:[NSDate date]];
+}
+
 @end

@@ -23,9 +23,6 @@
 @property (nonatomic, retain) NSString *serverURL;
 
 
-- (BOOL)deleteFromCoreData;
-
-
 @end
 
 

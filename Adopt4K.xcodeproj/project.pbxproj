@@ -40,6 +40,8 @@
 		AB84810A197F0E78005E82E5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB8480FE197F0E78005E82E5 /* QuartzCore.framework */; };
 		AB84810B197F0E78005E82E5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB8480FF197F0E78005E82E5 /* SystemConfiguration.framework */; };
 		AB94620B19884E900061D476 /* KSConnManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AB94620A19884E900061D476 /* KSConnManager.m */; };
+		ABBD0620198B33D300FCDBEF /* all_ozfeatures_final_sql.txt in Resources */ = {isa = PBXBuildFile; fileRef = ABBD061F198B33D300FCDBEF /* all_ozfeatures_final_sql.txt */; };
+		ABBD0624198B718C00FCDBEF /* all_ozfeatures_4_coredata.txt in Resources */ = {isa = PBXBuildFile; fileRef = ABBD0623198B718C00FCDBEF /* all_ozfeatures_4_coredata.txt */; };
 		ABCB81F91984F4700081DC99 /* Adoption.m in Sources */ = {isa = PBXBuildFile; fileRef = ABCB81F81984F4700081DC99 /* Adoption.m */; };
 		ABE7AEA819803F1700A02D17 /* FRKUserProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE7AEA719803F1700A02D17 /* FRKUserProfile.m */; };
 		ABE7AEAE1980541F00A02D17 /* FRKOZFeature.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE7AEAD1980541F00A02D17 /* FRKOZFeature.m */; };
@@ -110,6 +112,8 @@
 		AB8480FF197F0E78005E82E5 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		AB94620919884E900061D476 /* KSConnManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSConnManager.h; path = Adopt4K/KSConnManager.h; sourceTree = "<group>"; };
 		AB94620A19884E900061D476 /* KSConnManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KSConnManager.m; path = Adopt4K/KSConnManager.m; sourceTree = "<group>"; };
+		ABBD061F198B33D300FCDBEF /* all_ozfeatures_final_sql.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = all_ozfeatures_final_sql.txt; sourceTree = "<group>"; };
+		ABBD0623198B718C00FCDBEF /* all_ozfeatures_4_coredata.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = all_ozfeatures_4_coredata.txt; sourceTree = "<group>"; };
 		ABCB81F71984F4700081DC99 /* Adoption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Adoption.h; sourceTree = "<group>"; };
 		ABCB81F81984F4700081DC99 /* Adoption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Adoption.m; sourceTree = "<group>"; };
 		ABE7AEA619803F1700A02D17 /* FRKUserProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FRKUserProfile.h; path = Adopt4K/FRKUserProfile.h; sourceTree = "<group>"; };
@@ -218,6 +222,8 @@
 		AB847D80197F0B3F005E82E5 /* Adopt4K */ = {
 			isa = PBXGroup;
 			children = (
+				ABBD0623198B718C00FCDBEF /* all_ozfeatures_4_coredata.txt */,
+				ABBD061F198B33D300FCDBEF /* all_ozfeatures_final_sql.txt */,
 				ABE7AEC11980660100A02D17 /* ozfeatures.txt */,
 				AB847D89197F0B3F005E82E5 /* FRKAppDelegate.h */,
 				AB847D8A197F0B3F005E82E5 /* FRKAppDelegate.m */,
@@ -423,11 +429,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABBD0620198B33D300FCDBEF /* all_ozfeatures_final_sql.txt in Resources */,
 				AB847D93197F0B3F005E82E5 /* Images.xcassets in Resources */,
 				AB847D85197F0B3F005E82E5 /* InfoPlist.strings in Resources */,
 				AB847D8E197F0B3F005E82E5 /* Main.storyboard in Resources */,
 				ABE7AEC21980660100A02D17 /* ozfeatures.txt in Resources */,
 				ABE7AEC019805C2100A02D17 /* GoogleMaps.bundle in Resources */,
+				ABBD0624198B718C00FCDBEF /* all_ozfeatures_4_coredata.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
