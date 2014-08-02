@@ -73,6 +73,12 @@
 
     [self addPolygonsWithCurrentAdoption];
     
+    // Add line
+    UIColor *colorGrey = [UIColor colorWithRed:200.0/255.0 green:200.0/255.0 blue:200.0/255.0 alpha:1.0];
+    UIView *lineView1 = [[UIView alloc] initWithFrame:CGRectMake(0, 220, self.view.bounds.size.width, 1)];
+    lineView1.backgroundColor = colorGrey;
+    [self.view addSubview:lineView1];
+    
     
 }
 

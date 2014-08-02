@@ -14,6 +14,10 @@
 		AB328506198473730065B17A /* OZFeature.m in Sources */ = {isa = PBXBuildFile; fileRef = AB328505198473730065B17A /* OZFeature.m */; };
 		AB45AD8B19862321008C4E70 /* FRKOZListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB45AD8A19862321008C4E70 /* FRKOZListTableViewController.m */; };
 		AB45AD8E1986334C008C4E70 /* FRKOZDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB45AD8D1986334C008C4E70 /* FRKOZDetailsViewController.m */; };
+		AB6CCB6F198C61F2001285C0 /* 4K_logo_app_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AB6CCB6E198C61F2001285C0 /* 4K_logo_app_icon.png */; };
+		AB6CCB7C198C69B5001285C0 /* Adopt4K.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = AB6CCB79198C69B5001285C0 /* Adopt4K.sqlite */; };
+		AB6CCB7D198C69B5001285C0 /* Adopt4K.sqlite-shm in Resources */ = {isa = PBXBuildFile; fileRef = AB6CCB7A198C69B5001285C0 /* Adopt4K.sqlite-shm */; };
+		AB6CCB7E198C69B5001285C0 /* Adopt4K.sqlite-wal in Resources */ = {isa = PBXBuildFile; fileRef = AB6CCB7B198C69B5001285C0 /* Adopt4K.sqlite-wal */; };
 		AB847D7B197F0B3F005E82E5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB847D7A197F0B3F005E82E5 /* Foundation.framework */; };
 		AB847D7D197F0B3F005E82E5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB847D7C197F0B3F005E82E5 /* CoreGraphics.framework */; };
 		AB847D7F197F0B3F005E82E5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB847D7E197F0B3F005E82E5 /* UIKit.framework */; };
@@ -80,6 +84,10 @@
 		AB45AD8A19862321008C4E70 /* FRKOZListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRKOZListTableViewController.m; sourceTree = "<group>"; };
 		AB45AD8C1986334C008C4E70 /* FRKOZDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRKOZDetailsViewController.h; sourceTree = "<group>"; };
 		AB45AD8D1986334C008C4E70 /* FRKOZDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRKOZDetailsViewController.m; sourceTree = "<group>"; };
+		AB6CCB6E198C61F2001285C0 /* 4K_logo_app_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4K_logo_app_icon.png; sourceTree = "<group>"; };
+		AB6CCB79198C69B5001285C0 /* Adopt4K.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = Adopt4K.sqlite; sourceTree = "<group>"; };
+		AB6CCB7A198C69B5001285C0 /* Adopt4K.sqlite-shm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Adopt4K.sqlite-shm"; sourceTree = "<group>"; };
+		AB6CCB7B198C69B5001285C0 /* Adopt4K.sqlite-wal */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Adopt4K.sqlite-wal"; sourceTree = "<group>"; };
 		AB847D77197F0B3F005E82E5 /* Adopt4K.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Adopt4K.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB847D7A197F0B3F005E82E5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		AB847D7C197F0B3F005E82E5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -222,6 +230,9 @@
 		AB847D80197F0B3F005E82E5 /* Adopt4K */ = {
 			isa = PBXGroup;
 			children = (
+				AB6CCB79198C69B5001285C0 /* Adopt4K.sqlite */,
+				AB6CCB7A198C69B5001285C0 /* Adopt4K.sqlite-shm */,
+				AB6CCB7B198C69B5001285C0 /* Adopt4K.sqlite-wal */,
 				ABBD0623198B718C00FCDBEF /* all_ozfeatures_4_coredata.txt */,
 				ABBD061F198B33D300FCDBEF /* all_ozfeatures_final_sql.txt */,
 				ABE7AEC11980660100A02D17 /* ozfeatures.txt */,
@@ -255,6 +266,7 @@
 		AB847D81197F0B3F005E82E5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				AB6CCB6E198C61F2001285C0 /* 4K_logo_app_icon.png */,
 				AB847D82197F0B3F005E82E5 /* Adopt4K-Info.plist */,
 				AB847D83197F0B3F005E82E5 /* InfoPlist.strings */,
 				AB847D86197F0B3F005E82E5 /* main.m */,
@@ -429,12 +441,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB6CCB7D198C69B5001285C0 /* Adopt4K.sqlite-shm in Resources */,
 				ABBD0620198B33D300FCDBEF /* all_ozfeatures_final_sql.txt in Resources */,
 				AB847D93197F0B3F005E82E5 /* Images.xcassets in Resources */,
+				AB6CCB7C198C69B5001285C0 /* Adopt4K.sqlite in Resources */,
 				AB847D85197F0B3F005E82E5 /* InfoPlist.strings in Resources */,
+				AB6CCB7E198C69B5001285C0 /* Adopt4K.sqlite-wal in Resources */,
 				AB847D8E197F0B3F005E82E5 /* Main.storyboard in Resources */,
 				ABE7AEC21980660100A02D17 /* ozfeatures.txt in Resources */,
 				ABE7AEC019805C2100A02D17 /* GoogleMaps.bundle in Resources */,
+				AB6CCB6F198C61F2001285C0 /* 4K_logo_app_icon.png in Resources */,
 				ABBD0624198B718C00FCDBEF /* all_ozfeatures_4_coredata.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

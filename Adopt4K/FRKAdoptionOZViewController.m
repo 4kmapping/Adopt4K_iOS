@@ -59,6 +59,12 @@
     
     [self.view addSubview:gmView];
     
+    // Add line
+    UIColor *colorGrey = [UIColor colorWithRed:200.0/255.0 green:200.0/255.0 blue:200.0/255.0 alpha:1.0];
+    UIView *lineView1 = [[UIView alloc] initWithFrame:CGRectMake(0, 160, self.view.bounds.size.width, 1)];
+    lineView1.backgroundColor = colorGrey;
+    [self.view addSubview:lineView1];
+    
 }
 
 
@@ -142,7 +148,7 @@
 - (void)addPolygonsWithData:(OZFeature *)feature
 {
     NSArray *firstLevel = feature.polygons;
-    NSLog(@"first level: %@", firstLevel);
+    //NSLog(@"first level: %@", firstLevel);
     
     if ([feature.polygonType isEqual:@"MultiPolygon"])
     {
@@ -154,7 +160,7 @@
             
             for (int j = 0; j < [secondLevel count]; j++)
             {
-                NSLog(@"second level: %@", secondLevel[j]);
+                //NSLog(@"second level: %@", secondLevel[j]);
                 //NSLog(@"class type: %@", [secondLevel[j][0] class]);
                 NSNumber *longitude = secondLevel[j][0];
                 NSNumber *latitude = secondLevel[j][1];
@@ -190,7 +196,7 @@
         
         for (int j = 0; j < [secondLevel count]; j++)
         {
-            NSLog(@"second level: %@", secondLevel[j]);
+            //NSLog(@"second level: %@", secondLevel[j]);
             //NSLog(@"class type: %@", [firstLevel[j][0] class]);
             NSNumber *longitude = secondLevel[j][0];
             NSNumber *latitude = secondLevel[j][1];
@@ -217,12 +223,6 @@
         
     }
     
-}
-
-
-- (IBAction)checkTargetYear:(id)sender
-{
-    // done
 }
 
 

@@ -33,7 +33,13 @@
     
     self.ozNameLabel.text = ozName;
     
-    NSLog(@"selected server url in AdoptionYearViewController: %@", self.serverURL);
+    //NSLog(@"selected server url in AdoptionYearViewController: %@", self.serverURL);
+    
+    // Add line
+    UIColor *colorGrey = [UIColor colorWithRed:200.0/255.0 green:200.0/255.0 blue:200.0/255.0 alpha:1.0];
+    UIView *lineView1 = [[UIView alloc] initWithFrame:CGRectMake(0, 159, self.view.bounds.size.width, 1)];
+    lineView1.backgroundColor = colorGrey;
+    [self.view addSubview:lineView1];
     
 }
 
@@ -68,7 +74,6 @@
         [vc setSelectedFeature:self.selectedFeature];
         [vc setTargetYear:self.selectedTargetYear];
         [vc setServerURL:self.serverURL];
-        NSLog(@"HERE, serverURL: %@", self.serverURL);
     }
     if ([[segue identifier] isEqualToString:@"cancelAdoptionYearSegue"])
     {
