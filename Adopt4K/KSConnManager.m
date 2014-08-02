@@ -53,21 +53,27 @@ static int timeoutSeconds = 7;
     /* For Debugging */
     //NSLog(@"json data is: %@", jsonStr);
     //NSLog(@"syncing location status code is: %ld", (long)[responseCode statusCode]);
-    NSLog(@"Can't sync with a server! %@ %@", error, [error localizedDescription]);
-
     
-    NSDictionary* jsonDict = [NSJSONSerialization
+    if(responseData == nil)
+    {
+        NSLog(@"Can't sync with a server! %@ %@", error, [error localizedDescription]);
+    }
+    else
+    {
+    
+        NSDictionary* jsonDict = [NSJSONSerialization
                                 JSONObjectWithData:responseData
                                 options:0
                                 error:nil];
     
-    NSArray *results = jsonDict[@"results"];
+        NSArray *results = jsonDict[@"results"];
     
 
     
-    if([results count] > 0)
-    {
-        return true;    // Either someone has adopted or is working on this oz.
+        if([results count] > 0)
+        {
+            return true;    // Either someone has adopted or is working on this oz.
+        }
     }
 
     return false;
@@ -96,26 +102,30 @@ static int timeoutSeconds = 7;
     NSData *responseData = [NSURLConnection sendSynchronousRequest:request
                                                  returningResponse:&responseCode
                                                              error:&error];
-    
-    NSDictionary* jsonDict = [NSJSONSerialization
-                              JSONObjectWithData:responseData
-                              options:0
-                              error:nil];
-    
-    NSString *adoptionURL = jsonDict[@"url"];
-    
-    NSLog(@"lockAdoption URL: %@", adoptionURL);
-    
-    NSLog(@"syncing Adoption code is: %ld",
-          (long)[responseCode statusCode]);
-    NSLog(@"Can't sync with a server! %@ %@", error, [error localizedDescription]);
 
+    if(responseData == nil)
+    {
+        NSLog(@"Can't sync with a server! %@ %@", error, [error localizedDescription]);
+        return nil;
+    }
+    else
+    {
     
-    return adoptionURL;
+        NSDictionary* jsonDict = [NSJSONSerialization
+                                  JSONObjectWithData:responseData
+                                  options:0
+                                  error:nil];
+    
+        NSString *adoptionURL = jsonDict[@"url"];
+    
+        NSLog(@"lockAdoption URL: %@", adoptionURL);
+    
+        return adoptionURL;
+    }
 }
 
 
-- (void)confirmAdoption:(Adoption *)adoption
+- (BOOL)confirmAdoption:(Adoption *)adoption
 {
     
     NSString *jsonStr =
@@ -134,8 +144,28 @@ static int timeoutSeconds = 7;
                                                  returningResponse:&responseCode
                                                              error:&error];
     
-    NSLog(@"syncing Adoption code is: %ld", (long)[responseCode statusCode]);
-    NSLog(@"Can't sync with a server! %@ %@", error, [error localizedDescription]);
+    if(responseData == nil)
+    {
+        NSLog(@"Can't sync with a server! %@ %@", error, [error localizedDescription]);
+        return false;
+    }
+    else
+    {
+
+        int statusCodeNumber = (int)[responseCode statusCode];
+        
+        NSLog(@"syncing Adoption code is: %ld", (long)[responseCode statusCode]);
+        
+        if (statusCodeNumber >= 200 && statusCodeNumber < 300)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+        
+    }
 
 }
 
@@ -229,6 +259,59 @@ static int timeoutSeconds = 7;
 }
 
 
+- (NSMutableURLRequest *)prepareURLRequestWithURLString:(NSString *)urlStr
+                                                 method:(NSString *)method
+                                                   data:(NSString *)jsonStr
+                                            username:(NSString *)username
+                                                 appkey:(NSString *)appkey
+{
+    NSURL *url = [NSURL URLWithString:urlStr];
+    
+    NSLog(@"Server URL: %@", urlStr);
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setTimeoutInterval:timeoutSeconds];
+    
+    NSMutableDictionary * headers = [[NSMutableDictionary alloc] init];
+    
+    NSString *credential = [NSString stringWithFormat:@"%@:%@",
+                            username, appkey];
+    
+    NSString *credentialBase64 = [self base64String:credential];
+    
+    NSString *appkeyStr = [NSString stringWithFormat:@"Basic %@",
+                           credentialBase64];
+    
+    NSLog(@"appkeyStr: %@", appkeyStr);
+    
+    [headers setObject:appkeyStr forKey:@"Authorization"];
+    [headers setObject:@"application/json" forKey:@"Accept"];
+    [headers setObject:@"application/json" forKey:@"Content-Type"];
+    
+    [request setAllHTTPHeaderFields:headers];
+    
+    request.HTTPMethod = method;
+    
+    // Setting HTTP body
+    if([method isEqual:@"GET"] || [method isEqual:@"DELETE"])
+    {
+        // Do nothing
+    }
+    else if([method isEqual:@"POST"] || [method isEqual:@"PATCH"])
+    {
+        [request setHTTPBody:[jsonStr dataUsingEncoding:NSUTF8StringEncoding]];
+    }
+    else
+    {
+        // Do nothing now.
+    }
+    
+    return request;
+    
+}
+
+
+
 
 # pragma mark - Userprofile Info
 
@@ -257,6 +340,61 @@ static int timeoutSeconds = 7;
     
     return nil;
 }
+
+
+- (NSString *)checkUserprofileFromServerWithUsername:(NSString *)username
+                                              appkey:(NSString *)appkey
+{
+    NSString *url_adoptions = [NSString
+                            stringWithFormat:@"http://4kadopt.org/api/users/"];
+    
+    NSMutableURLRequest *request = [self
+            prepareURLRequestWithURLString:url_adoptions
+                                  method:@"GET"
+                                    data:nil
+                                    username:username
+                                    appkey:appkey];
+    
+    NSHTTPURLResponse *responseCode = nil;
+    NSError *error = nil;
+    
+    NSData *responseData = [NSURLConnection sendSynchronousRequest:request
+                                                 returningResponse:&responseCode
+                                                             error:&error];
+    
+    int statusCodeNumber = (int)[responseCode statusCode];
+    
+    NSLog(@"syncing Adoption code is: %ld", (long)[responseCode statusCode]);
+    
+    if (statusCodeNumber >= 400 && statusCodeNumber < 500)
+    {
+        return nil;
+    }
+    
+    /* For Debugging */
+    //NSLog(@"json data is: %@", jsonStr);
+    //NSLog(@"syncing location status code is: %ld", (long)[responseCode statusCode]);
+    NSLog(@"Can't sync with a server! %@ %@", error, [error localizedDescription]);
+    
+    
+    NSDictionary* jsonDict = [NSJSONSerialization
+                              JSONObjectWithData:responseData
+                              options:0
+                              error:nil];
+    
+    NSArray *results = jsonDict[@"results"];
+    
+    
+    if([results count] > 0)
+    {
+        NSDictionary *userDict = results[0];
+        return userDict[@"first_name"];
+    }
+    
+    return nil;
+    
+}
+
 
 
 - (NSString *)base64String:(NSString *)str

@@ -41,9 +41,9 @@
     
     NSLog(@"selected oz id: %@", selectedOZ.wid);
     
-    self.oznameLabel.text = [NSString stringWithFormat:@"%@, %@",
+    self.oznameLabel.text = [NSString stringWithFormat:@"%@, %@ (%@)",
                              selectedOZ.zoneName,
-                             selectedOZ.countryName];
+                             selectedOZ.countryName, selectedOZ.wid];
     
     self.yearLabel.text = [NSString stringWithFormat:@"By Year %d",
                            [selectedOZ.year intValue]];
@@ -123,7 +123,7 @@
     
     double currMaxRadiusX = 0.0;
     NSArray *firstLevel = feature.polygons;
-    NSLog(@"first level: %@", firstLevel);
+    //NSLog(@"first level: %@", firstLevel);
     
     if ([feature.polygonType isEqual:@"MultiPolygon"])
     {
@@ -135,7 +135,7 @@
             
             for (int j = 0; j < [secondLevel count]; j++)
             {
-                NSLog(@"second level: %@", secondLevel[j]);
+                //NSLog(@"second level: %@", secondLevel[j]);
                 //NSLog(@"class type: %@", [secondLevel[j][0] class]);
                 NSNumber *longitude = secondLevel[j][0];
                 NSNumber *latitude = secondLevel[j][1];
@@ -259,6 +259,15 @@
     else
     {
         // TODO: Inform user, log
+        UIAlertView *notPermitted = [[UIAlertView alloc]
+                                     initWithTitle:@"Alert"
+                                     message:@"Please try again."
+                                     delegate:nil
+                                     cancelButtonTitle:@"OK"
+                                     otherButtonTitles:nil];
+        // shows alert to user
+        [notPermitted show];
+
         NSLog(@"Error in deleting the current adoption (wid:%@) in server side",
               selectedOZ.wid);
         

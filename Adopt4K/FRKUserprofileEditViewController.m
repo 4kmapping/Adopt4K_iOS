@@ -9,6 +9,8 @@
 #import "FRKUserprofileEditViewController.h"
 #import "FRKAppDelegate.h"
 #import "Userprofile.h"
+#import "KSConnManager.h"
+
 
 @interface FRKUserprofileEditViewController ()
 
@@ -98,10 +100,33 @@
 {
     NSString *username = self.usernameTextField.text;
     NSString *appkey = self.appkeyTextField.text;
-    NSString *displayName = @"Anonymous";
+    NSString *displayName = @"";
 
-// TODO:
-#warning CHECK with server.
+    // Check if the current user credential is valid in a server side.
+    // ===
+    
+    KSConnManager *conn = [KSConnManager getInstance];
+    
+    displayName = [conn checkUserprofileFromServerWithUsername:username
+                                                      appkey:appkey];
+    
+    if(displayName == nil)
+    {
+        
+        UIAlertView *notPermitted = [[UIAlertView alloc]
+                                     initWithTitle:@"Your username has NOT been registered!"
+                                     message:@"Please register your username and appkey in a server."
+                                     delegate:nil
+                                     cancelButtonTitle:@"OK"
+                                     otherButtonTitles:nil];
+        
+        // shows alert to user
+        [notPermitted show];
+        
+        // Stop registration.
+        return;
+    }
+    
     
     FRKAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     
@@ -167,9 +192,9 @@
         // Do nothing.
     }
     
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:@"RefreshUserprofile" object:nil];
 
-    
     [self.navigationController popToRootViewControllerAnimated:YES];
     
 }

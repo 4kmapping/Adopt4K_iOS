@@ -116,7 +116,7 @@
     
     Adoption *adoption = [adoptedOZList objectAtIndex:indexPath.row];
     NSLog(@"Adoption: %@, %@", adoption.wid, adoption.zoneName);
-    cell.textLabel.text = [NSString stringWithFormat:@"%@, %@ By %d", adoption.zoneName, adoption.countryName, [adoption.year intValue]];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@, %@ (%@) By %d", adoption.zoneName, adoption.countryName, adoption.wid, [adoption.year intValue]];
     
     cell.textLabel.font=[UIFont fontWithName:@"Arial" size:14];
     cell.textLabel.numberOfLines = 2;

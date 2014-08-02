@@ -17,9 +17,11 @@
 
 - (BOOL)checkAdoptionWidLock:(NSString *)wid;
 - (NSString *)lockAdoption:(NSString *)wid;
-- (void)confirmAdoption:(Adoption *)adoption;
+- (BOOL)confirmAdoption:(Adoption *)adoption;
 - (BOOL)deleteAdoption:(Adoption *)adoption;
 - (BOOL)deleteAdoptionWithServerURL:(NSString *)serverURL;
+
+- (NSString *)checkUserprofileFromServerWithUsername:(NSString *)username appkey:(NSString *)appkey;
 
 
 @end

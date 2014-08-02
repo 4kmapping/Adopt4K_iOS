@@ -230,11 +230,6 @@
 {
     if ([[segue identifier] isEqualToString:@"adoptionYearSegue"])
     {
-        
-        KSConnManager *conn = [KSConnManager getInstance];
-        serverURL = [conn lockAdoption:currFeature.wid];
-        
-        
         FRKAdoptionYearViewController *vc = [segue destinationViewController];
         
         [vc setSelectedFeature:currFeature];
@@ -270,6 +265,23 @@
             
             return NO;
         }
+        
+        
+        serverURL = [conn lockAdoption:currFeature.wid];
+        if (serverURL == nil)
+        {
+            UIAlertView *notPermitted = [[UIAlertView alloc]
+                                         initWithTitle:@"Alert"
+                                         message:@"Failed to lock. Please try again later."
+                                         delegate:nil
+                                         cancelButtonTitle:@"OK"
+                                         otherButtonTitles:nil];
+            // shows alert to user
+            [notPermitted show];
+            
+            return NO;
+        }
+        
     }
     
     // by default perform the segue transition

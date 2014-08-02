@@ -19,7 +19,7 @@
 @property (weak,nonatomic) IBOutlet UILabel *zoneNameLabel;
 @property (weak,nonatomic) IBOutlet UILabel *yearLabel;
 
-- (IBAction) adoptionConfirmed;
+- (BOOL) adoptionConfirmed;
 
 
 @end

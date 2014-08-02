@@ -47,20 +47,7 @@
 }
 
 
-- (IBAction)adoptOne
-{
-    [self adoptionConfirmed];
-    // Going back to menu page
-}
-
-
-- (IBAction)adoptMore
-{
-    [self adoptionConfirmed];
-    // Going back to the first page of adoption
-}
-
-- (void)adoptionConfirmed
+- (BOOL)adoptionConfirmed
 {
 
     FRKAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
@@ -83,24 +70,30 @@
     
     NSLog(@"Server URL in confirmation view: %@", self.serverURL);
     
+    
+    // TODO: Save to Server
+    // ===
+    KSConnManager *conn = [KSConnManager getInstance];
+    if(![conn confirmAdoption:adoption])
+    {
+        return false;
+    }
+    
+    // Save to local
     NSError *savingError = nil;
     
     if ([context save:&savingError])
     {
         NSLog(@"Successfully saved the context.");
         [self displayAdoptions];
+        return true;
     }
     else
     {
         NSLog(@"Failed to save the context. Error = %@", savingError);
     }
-    
-    // TODO: Save to Server
-    // ===
-    KSConnManager *conn = [KSConnManager getInstance];
-    [conn confirmAdoption:adoption];
-    
-    
+
+    return false;
 }
 
 
@@ -130,7 +123,7 @@
     
 }
 
-
+/*
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"adoptMoreSegue"])
@@ -168,9 +161,63 @@
     {
         //To nothing.
     }
-    
-    
+ 
 }
+*/
+
+
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
+{
+
+    if ([identifier isEqualToString:@"adoptMoreSegue"] ||
+        [identifier isEqualToString:@"adoptOneSegue"] )
+    {
+        // perform your computation to determine whether segue should occur
+        
+
+        
+        BOOL segueShouldOccur = [self adoptionConfirmed];
+        
+        if (!segueShouldOccur)
+        {
+            UIAlertView *notPermitted = [[UIAlertView alloc]
+                                         initWithTitle:@"Alert"
+                                         message:@"Please try again."
+                                         delegate:nil
+                                         cancelButtonTitle:@"OK"
+                                         otherButtonTitles:nil];
+            // shows alert to user
+            [notPermitted show];
+            
+            return NO;
+        }
+    }
+    if ([identifier isEqualToString:@"cancelAdoptionSegue"])
+    {
+        KSConnManager *conn = [KSConnManager getInstance];
+        
+        BOOL segueShouldOccur = [conn deleteAdoptionWithServerURL:self.serverURL];
+        if (!segueShouldOccur)
+        {
+            UIAlertView *notPermitted = [[UIAlertView alloc]
+                                         initWithTitle:@"Alert"
+                                         message:@"Please try again."
+                                         delegate:nil
+                                         cancelButtonTitle:@"OK"
+                                         otherButtonTitles:nil];
+            // shows alert to user
+            [notPermitted show];
+            
+            return NO;
+        }
+    }
+        
+        
+    
+    // by default perform the segue transition
+    return YES;
+}
+
 
 
 
