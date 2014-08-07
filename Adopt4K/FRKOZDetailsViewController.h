@@ -20,6 +20,7 @@
 @property (weak,nonatomic) IBOutlet UILabel *usernameLabel;
 @property (weak,nonatomic) IBOutlet UILabel *oznameLabel;
 @property (weak,nonatomic) IBOutlet UILabel *yearLabel;
+@property (weak,nonatomic) IBOutlet UILabel *infoLabel;
 
 
 - (IBAction)deleteOZ;

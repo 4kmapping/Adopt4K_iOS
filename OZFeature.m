@@ -19,5 +19,7 @@
 @dynamic zoneName;
 @dynamic countryName;
 @dynamic polygons;
+@dynamic population;
+@dynamic worldType;
 
 @end

@@ -36,7 +36,6 @@
     [super viewDidLoad];
     
     FRKAppDelegate *appDelegate = (FRKAppDelegate *)[[UIApplication sharedApplication] delegate];
-    ozFeatures = appDelegate.ozFeatures;
     
     // Set a center of the map
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:1.285

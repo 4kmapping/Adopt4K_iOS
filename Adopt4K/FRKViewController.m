@@ -20,6 +20,14 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    // Get the current user's profile to display user info
+    FRKAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    Userprofile *profile = [appDelegate userprofile];
+    
+    self.nameLabel.text = profile.displayName;
+    self.emailLabel.text = profile.username;
+    
 }
 
 - (void)didReceiveMemoryWarning

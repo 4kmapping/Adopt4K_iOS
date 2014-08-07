@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import <GoogleMaps/GoogleMaps.h>
-#import "FRKOZFeature.h"
 #import "OZFeature.h"
 
 @interface FRKAdoptionYearViewController : UIViewController <GMSMapViewDelegate>

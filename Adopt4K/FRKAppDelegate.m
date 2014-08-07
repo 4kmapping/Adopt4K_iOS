@@ -10,7 +10,6 @@
 #import <GoogleMaps/GoogleMaps.h>
 
 #import "FRKAppDelegate.h"
-#import "FRKOZfeature.h"
 #import "OZFeature.h"    // CoreData ManagedObject
 
 @implementation FRKAppDelegate
@@ -133,59 +132,8 @@
      
 
 # pragma mark - OZFeature creation from a file
-- (void)initOZFeaturesFromFile
-{
 
-    // Make OZFeature List
-	// Read OZ features from a local file.
-    // ***
-    self.ozFeatures = [[NSMutableDictionary alloc] init];
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"ozfeatures" ofType:@"txt"];
-    
-    NSError *error;
-    NSCharacterSet *newlineCharSet = [NSCharacterSet newlineCharacterSet];
-    NSString* fileContents = [NSString stringWithContentsOfFile:filePath
-                                                       encoding:NSUTF8StringEncoding
-                                                          error:&error];
-    NSArray *lines = [fileContents componentsSeparatedByCharactersInSet:newlineCharSet];
-    NSLog(@"error: %@", error);
-    
-    for (int i=0;i<lines.count;i++)
-    {
-        NSString *line = lines[i];
-        
-        NSData *data = [line dataUsingEncoding:NSUTF8StringEncoding];
-        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-        
-        OZFeature *ozfeature = [[OZFeature alloc] init];
-        NSDictionary *properties = [dict valueForKey:@"properties"];
-        
-        NSString *widKey = [properties valueForKey:@"WorldID"];
-        
-        
-        
-        NSString *polygonType = [[dict valueForKey:@"geometry"] valueForKey:@"type"];
-        
-        NSArray *polygons = [[dict valueForKey:@"geometry"] valueForKey:@"coordinates"];
-        NSLog(@"polygons: %@", polygons);
-        
-        ozfeature.wid = widKey;
-        ozfeature.polygonType = polygonType;
-        ozfeature.polygons = polygons;
-        ozfeature.center_x = [properties valueForKey:@"Cen_x"];
-        ozfeature.center_y = [properties valueForKey:@"Cen_y"];
-        ozfeature.area = [properties valueForKey:@"Shape_Area"];
-        ozfeature.zoneName = [properties valueForKey:@"Zone_Name"];
-        ozfeature.countryName = [properties valueForKey:@"Cnty_Name"];
-        
-        [self.ozFeatures setObject:ozfeature forKey:ozfeature.wid];
-        
-    }
-    
-}
-
-
-
+/*
 - (BOOL)initOZFeatureCoreDataFromFile
 {
     // Fist Check if pre-poluated sqlite db exists.
@@ -205,9 +153,10 @@
     
     // Make OZFeature List
 	// Read OZ features from a local file.
-    // ***
+    // ===
     
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"ozfeatures" ofType:@"txt"];
+    NSString *filePath = [[NSBundle mainBundle]
+                          pathForResource:@"all_ozfeatures_ABC_4_coredata" ofType:@"txt"];
     
     NSError *error;
     NSCharacterSet *newlineCharSet = [NSCharacterSet newlineCharacterSet];
@@ -256,12 +205,15 @@
             ozfeature.area = [properties valueForKey:@"Shape_Area"];
             ozfeature.zoneName = [properties valueForKey:@"Zone_Name"];
             ozfeature.countryName = [properties valueForKey:@"Cnty_Name"];
+
+            
             
             NSError *savingError = nil;
             
             if ([[self managedObjectContext] save:&savingError])
             {
                 NSLog(@"Successfully saved the context.");
+                NSLog(@"population: @d, world type: %@", ozfeature.population, ozfeature.worldType);
             }
             else
             {
@@ -279,6 +231,7 @@
     return true;
     
 }
+*/
 
 
 - (BOOL)loadOZFeaturesFromJSON
@@ -300,7 +253,7 @@
     
     
     // Load data by executing SQL statements.
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"all_ozfeatures_4_coredata"
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"all_ozfeatures_ABC_4_coredata"
                                                            ofType:@"txt"];
     
     NSError *error;
@@ -340,6 +293,8 @@
             ozfeature.center_y = [dict valueForKey:@"center_y"];
             ozfeature.polygonType = [dict valueForKey:@"polygonType"];
             ozfeature.polygons = [dict valueForKey:@"polygons"];
+            ozfeature.worldType = [dict valueForKey:@"worldType"];
+            ozfeature.population = [dict valueForKey:@"population"];
             
             NSError *savingError = nil;
             
@@ -359,7 +314,6 @@
         }
         
     }
-    
     
     return true;
     

@@ -41,11 +41,25 @@
     
     NSLog(@"selected oz id: %@", selectedOZ.wid);
     
+    NSDictionary *dict =[[NSDictionary alloc]
+                         initWithObjects:@[@"Low",@"Medium", @"High"]
+                         forKeys:@[@"A",@"B",@"C"]];
+
+    
+    OZFeature *feature = [self getOZFeatureWithWid:selectedOZ.wid];
+    
     self.oznameLabel.text = [NSString stringWithFormat:@"%@, %@ (%@)",
                              selectedOZ.zoneName,
-                             selectedOZ.countryName, selectedOZ.wid];
+                             selectedOZ.countryName, selectedOZ.wid,
+                             dict[feature.worldType],
+                             [feature.population intValue]];
     
-    self.yearLabel.text = [NSString stringWithFormat:@"By Year %d",
+    self.infoLabel.text = [NSString stringWithFormat:@"Gospel Access: %@  Population: %d",
+                           dict[feature.worldType],
+                           [feature.population intValue]];
+    
+    
+    self.yearLabel.text = [NSString stringWithFormat:@"Year %d",
                            [selectedOZ.year intValue]];
     
 
@@ -86,6 +100,39 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+- (OZFeature *)getOZFeatureWithWid:(NSString *)wid
+{
+
+    FRKAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    
+    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    
+    NSEntityDescription *entityDesc = [NSEntityDescription
+                                       entityForName:@"OZFeature"
+                                       inManagedObjectContext:context];
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    [fetchRequest setEntity:entityDesc];
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"(wid = %@)", wid];
+    [fetchRequest setPredicate:pred];
+    
+    NSError *error;
+    NSArray *results = [context executeFetchRequest:fetchRequest error:&error];
+    
+    OZFeature *feature = nil;
+    if([results count] == 0)
+    {
+        NSLog(@"No matches.");
+    }
+    else
+    {
+        feature = results[0];
+    }
+    
+    return feature;
 }
 
 

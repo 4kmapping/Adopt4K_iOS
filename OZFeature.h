@@ -20,5 +20,8 @@
 @property (nonatomic, retain) NSString * zoneName;
 @property (nonatomic, retain) NSString * countryName;
 @property (nonatomic, retain) NSArray *polygons;
+@property (nonatomic, retain) NSNumber * population;
+@property (nonatomic, retain) NSString * worldType;
+
 
 @end
