@@ -77,6 +77,7 @@
     }
     if ([[segue identifier] isEqualToString:@"cancelAdoptionYearSegue"])
     {
+        /*
         // Delete Adoption lock in server side
         KSConnManager *conn = [KSConnManager getInstance];
         BOOL success = [conn deleteAdoptionWithServerURL:self.serverURL];
@@ -88,6 +89,7 @@
         {
             NSLog(@"Failed to remove adoption lock for %@.", self.serverURL);
         }
+        */ 
     }
 }
 

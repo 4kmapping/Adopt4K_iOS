@@ -218,7 +218,7 @@
         
         for (int j = 0; j < [secondLevel count]; j++)
         {
-            NSLog(@"second level: %@", secondLevel[j]);
+            //NSLog(@"second level: %@", secondLevel[j]);
             //NSLog(@"class type: %@", [firstLevel[j][0] class]);
             NSNumber *longitude = secondLevel[j][0];
             NSNumber *latitude = secondLevel[j][1];
@@ -272,7 +272,30 @@
 
 #pragma mark - Delete oz.
 
-- (IBAction)deleteOZ
+-(IBAction)didDeleteClicked
+{
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Warning"
+                                                    message: @"Are you sure to delete?"
+                                                   delegate:self
+                                          cancelButtonTitle:@"Cancel"
+                                          otherButtonTitles:@"Confirm",nil];
+    [alert show];
+}
+
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0) {
+        NSLog(@"Canceled.");
+    }
+    else {
+        NSLog(@"Confirmed.");
+        [self deleteOZ];
+    }
+}
+
+- (BOOL)deleteOZ
 {
     NSLog(@"Deleting oz: %@", selectedOZ.wid);
     
@@ -302,6 +325,8 @@
         
         [self.navigationController popViewControllerAnimated:YES];
         
+        return true;
+        
     }
     else
     {
@@ -318,6 +343,7 @@
         NSLog(@"Error in deleting the current adoption (wid:%@) in server side",
               selectedOZ.wid);
         
+        return false;
     }
     
     

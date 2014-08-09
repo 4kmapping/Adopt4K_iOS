@@ -22,7 +22,7 @@
     double currMaxRadiusX;
     double currCenterX;
     
-    OZFeature *currFeature;
+    
     int currTargetYear;
 
 }
@@ -34,9 +34,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    FRKAppDelegate *appDelegate = (FRKAppDelegate *)[[UIApplication sharedApplication] delegate];
-    
+        
     // Set a center of the map
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:1.285
                                                             longitude:103.848
@@ -71,7 +69,7 @@
 {
 
     NSString *wid = self.ozidTextField.text;
-    //NSLog(@"wid >> %@",wid);
+    NSLog(@"wid >> %@",wid);
 
     // TODO: Check if the current wid is already chosen by others.
     // ===
@@ -96,9 +94,22 @@
     if([results count] == 0)
     {
         NSLog(@"No matches.");
+        
+        UIAlertView *notPermitted = [[UIAlertView alloc]
+                                     initWithTitle:@"Alert"
+                                     message:@"The OZ ID does not exist."
+                                     delegate:nil
+                                     cancelButtonTitle:@"OK"
+                                     otherButtonTitles:nil];
+        // shows alert to user
+        [notPermitted show];
+        
+        
+        return;
     }
     else
     {
+        NSLog(@"matched.");
         feature = results[0];
     }
 
@@ -107,7 +118,7 @@
     //FRKOZFeature *feature = ozFeatures[wid];
     
     // Set a current feature
-    currFeature = feature;
+    self.currFeature = feature;
     
     // clean up a map before adding polygons & initialize variables
     [gmView clear];
@@ -137,8 +148,8 @@
     [gmView setCamera:camera];
     
     // Display the selected zone name
-    NSString *zoneName = [NSString stringWithFormat:@"%@, %@", currFeature.zoneName,
-                          currFeature.countryName];
+    NSString *zoneName = [NSString stringWithFormat:@"%@, %@", self.currFeature.zoneName,
+                          self.currFeature.countryName];
     self.zoneNameLabel.text = zoneName;
     
 }
@@ -231,7 +242,14 @@
     {
         FRKAdoptionYearViewController *vc = [segue destinationViewController];
         
-        [vc setSelectedFeature:currFeature];
+        NSString *wid = self.ozidTextField.text;
+        if (![self.currFeature.wid isEqualToString:wid])
+        {
+            self.currFeature = [OZFeature getOZFeatureWithWid:wid];
+            [self loadOZFeature:(id)nil];
+        }
+        
+        [vc setSelectedFeature:self.currFeature];
         [vc setSelectedTargetYear:currTargetYear];
         [vc.view addSubview:gmView];
         [vc setServerURL:serverURL];
@@ -249,23 +267,62 @@
         
         KSConnManager *conn = [KSConnManager getInstance];
         
-        BOOL segueShouldOccur = (![conn checkAdoptionWidLock:currFeature.wid]);
         
-        if (!segueShouldOccur)
+        // Check if wid is valid
+        if ([self.ozidTextField.text length] == 0)
+        {
+            return NO;
+        }
+        
+        NSString *adoptionStatus = [conn checkOZStatus:self.ozidTextField.text];
+        
+        if ([adoptionStatus isEqualToString:@"taken"])
+        {
+            
+            UIAlertView *notPermitted = [[UIAlertView alloc]
+                initWithTitle:@"Alert"
+                message:@"This OZ has been already chosen. We recommand to choose another OZ."
+                delegate:nil
+                cancelButtonTitle:@"OK"
+                otherButtonTitles:nil];
+            // shows alert to user
+            [notPermitted show];
+            
+            return YES; // Still allow users to choose OZ.
+        }
+        else if([adoptionStatus isEqualToString:@"owned"])
         {
             UIAlertView *notPermitted = [[UIAlertView alloc]
                                          initWithTitle:@"Alert"
-                                         message:@"Please choose another Omega Zone."
+                                         message:@"You already adopted the OZ."
                                          delegate:nil
                                          cancelButtonTitle:@"OK"
                                          otherButtonTitles:nil];
             // shows alert to user
             [notPermitted show];
             
-            return NO;
+            return NO; // Still allow users to choose OZ.
+            
+        }
+        else if([adoptionStatus isEqualToString:@"wrongId"])
+        {
+            UIAlertView *notPermitted = [[UIAlertView alloc]
+                                         initWithTitle:@"Alert"
+                                         message:@"OZ ID does not exist."
+                                         delegate:nil
+                                         cancelButtonTitle:@"OK"
+                                         otherButtonTitles:nil];
+            // shows alert to user
+            [notPermitted show];
+            
+            return NO; // Still allow users to choose OZ.
+        }
+        else
+        {
+            return YES;
         }
         
-        
+        /* TODO: Delete later
         serverURL = [conn lockAdoption:currFeature.wid];
         if (serverURL == nil)
         {
@@ -280,6 +337,7 @@
             
             return NO;
         }
+        */
         
     }
     

@@ -8,6 +8,7 @@
 
 #import "KSConnManager.h"
 #import "Adoption.h"
+#import "OZFeature.h"
 #import "Userprofile.h"
 #import "FRKAppDelegate.h"
 
@@ -29,6 +30,48 @@ static int timeoutSeconds = 7;
         }
     }
     return singletonInstance;
+}
+
+
+- (NSString *)checkOZStatus:(NSString *)wid
+{
+    FRKAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    
+    Userprofile *profile = [appDelegate userprofile];
+    
+    NSString *url_adoptions =
+    [NSString stringWithFormat:@"http://4kadopt.org/api/ozstatus/?wid=%@&uid=%@",
+        wid, [profile userId] ];
+    
+    NSMutableURLRequest *request =
+    [self prepareURLRequestWithURLString:url_adoptions
+                                  method:@"GET"
+                                    data:nil];
+    
+    NSHTTPURLResponse *responseCode = nil;
+    NSError *error = nil;
+    
+    NSData *responseData = [NSURLConnection sendSynchronousRequest:request
+                                                 returningResponse:&responseCode
+                                                             error:&error];
+    
+    /* For Debugging */
+    //NSLog(@"json data is: %@", jsonStr);
+    //NSLog(@"syncing location status code is: %ld", (long)[responseCode statusCode]);
+    
+    if(responseData == nil)
+    {
+        NSLog(@"Can't sync with a server! %@ %@", error, [error localizedDescription]);
+    }
+    else
+    {
+        NSString *status = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+        NSLog(@"STATUS: %@", status);
+        return status;
+    }
+    
+    return nil;
+
 }
 
 
@@ -81,6 +124,11 @@ static int timeoutSeconds = 7;
 }
 
 
+
+
+
+
+
 - (NSString *)lockAdoption:(NSString *)wid
 {
 
@@ -124,6 +172,59 @@ static int timeoutSeconds = 7;
     }
 }
 
+
+- (NSString *)registerWithAdoption:(Adoption *)adoption ozfeature:(OZFeature *)feature
+{
+
+    FRKAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    Userprofile *profile = [appDelegate userprofile];
+    
+    NSString *url_adoptions =
+    [NSString stringWithFormat:@"http://4kadopt.org/api/adoptions/"];
+    
+    NSString *jsonStr =
+    [NSString stringWithFormat:
+     @"{\"worldid\":\"%@\",\"targetyear\":%d,\"is_adopted\":true,\"oz_zone_name\":\"%@\",\"oz_country_name\":\"%@\",\"user_display_name\":\"%@\"}",
+        adoption.wid, [adoption.year intValue], feature.zoneName,
+        feature.countryName, profile.displayName];
+    
+    NSMutableURLRequest *request =
+    [self prepareURLRequestWithURLString:url_adoptions
+                                  method:@"POST"
+                                    data:jsonStr];
+    
+    NSHTTPURLResponse *responseCode = nil;
+    NSError *error = nil;
+    
+    NSData *responseData = [NSURLConnection sendSynchronousRequest:request
+                                                 returningResponse:&responseCode
+                                                             error:&error];
+    
+    if(responseData == nil)
+    {
+        NSLog(@"Can't sync with a server! %@ %@", error, [error localizedDescription]);
+        return nil;
+    }
+    else
+    {
+        
+        NSDictionary* jsonDict = [NSJSONSerialization
+                                  JSONObjectWithData:responseData
+                                  options:0
+                                  error:nil];
+        
+        NSString *adoptionURL = jsonDict[@"url"];
+        
+        NSLog(@"Registered URL#: %@", adoptionURL);
+        NSString* newStr = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+
+        NSLog(@"Received data#: %@", newStr);
+        
+        
+        return adoptionURL;
+    }
+    
+}
 
 - (BOOL)confirmAdoption:(Adoption *)adoption
 {
@@ -207,6 +308,63 @@ static int timeoutSeconds = 7;
 }
 
 
+- (NSDictionary *)syncAdoptionWithServer
+{
+    FRKAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    Userprofile *profile = [appDelegate userprofile];
+    
+    NSString *url_adoptions =
+    [NSString stringWithFormat:@"http://4kadopt.org/api/adoptions/"];
+    
+    NSMutableURLRequest *request =
+    [self prepareURLRequestWithURLString:url_adoptions
+                                  method:@"GET"
+                                    data:nil];
+    
+    NSHTTPURLResponse *responseCode = nil;
+    NSError *error = nil;
+    
+    NSData *responseData = [NSURLConnection sendSynchronousRequest:request
+                                                 returningResponse:&responseCode
+                                                             error:&error];
+    
+    if(responseData == nil)
+    {
+        NSLog(@"Can't sync with a server! %@ %@", error, [error localizedDescription]);
+        
+        UIAlertView *notPermitted = [[UIAlertView alloc]
+                                     initWithTitle:@"Error happend."
+                                     message:@"Please try again later."
+                                     delegate:nil
+                                     cancelButtonTitle:@"OK"
+                                     otherButtonTitles:nil];
+        // shows alert to user
+        [notPermitted show];
+        
+        return nil;
+    }
+    else
+    {
+        
+        NSDictionary* jsonDict = [NSJSONSerialization
+                                  JSONObjectWithData:responseData
+                                  options:0
+                                  error:nil];
+        
+        
+        NSString* newStr = [[NSString alloc] initWithData:responseData
+                                                 encoding:NSUTF8StringEncoding];
+        NSLog(@"Received data#: %@", newStr);
+        
+        
+        return jsonDict;
+    }
+    
+    
+    return nil;
+}
+
+
 - (NSMutableURLRequest *)prepareURLRequestWithURLString:(NSString *)urlStr
                                                  method:(NSString *)method
                                                    data:(NSString *)jsonStr
@@ -218,7 +376,8 @@ static int timeoutSeconds = 7;
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setTimeoutInterval:timeoutSeconds];
     
-    Userprofile *profile = [self getUserprofile];
+    FRKAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    Userprofile *profile = [appDelegate userprofile];
     
     NSMutableDictionary * headers = [[NSMutableDictionary alloc] init];
     
@@ -342,7 +501,7 @@ static int timeoutSeconds = 7;
 }
 
 
-- (NSString *)checkUserprofileFromServerWithUsername:(NSString *)username
+- (NSArray *)checkUserprofileFromServerWithUsername:(NSString *)username
                                               appkey:(NSString *)appkey
 {
     NSString *url_adoptions = [NSString
@@ -388,7 +547,9 @@ static int timeoutSeconds = 7;
     if([results count] > 0)
     {
         NSDictionary *userDict = results[0];
-        return userDict[@"first_name"];
+        
+        return [NSArray arrayWithObjects:userDict[@"first_name"],
+                userDict[@"id"],nil];
     }
     
     return nil;

@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import <GoogleMaps/GoogleMaps.h>
-//#import "FRKOZFeature.h"
 #import "FRKAppDelegate.h"
 #import "OZFeature.h"
 
@@ -20,6 +19,8 @@
 @property (weak,nonatomic) IBOutlet UITextField *ozidTextField;
 @property (weak,nonatomic) IBOutlet UILabel *zoneNameLabel;
 @property (weak,nonatomic) IBOutlet UIButton *selectButton;
+
+@property (strong,nonatomic) OZFeature *currFeature;
 
 - (IBAction)loadOZFeature:(id)sender;
 

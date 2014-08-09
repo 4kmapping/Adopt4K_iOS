@@ -10,7 +10,7 @@
 #import "Adoption.h"
 #import <GoogleMaps/GoogleMaps.h>
 
-@interface FRKOZDetailsViewController : UIViewController
+@interface FRKOZDetailsViewController : UIViewController <UIAlertViewDelegate>
 {
     
 }
@@ -23,7 +23,7 @@
 @property (weak,nonatomic) IBOutlet UILabel *infoLabel;
 
 
-- (IBAction)deleteOZ;
+- (BOOL)deleteOZ;
 
 - (void)addPolygonsWithCurrentAdoption;
 

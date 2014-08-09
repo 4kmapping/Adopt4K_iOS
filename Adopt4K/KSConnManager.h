@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class Adoption;
+@class OZFeature;
 
 @interface KSConnManager : NSObject
 
@@ -16,12 +17,17 @@
 
 
 - (BOOL)checkAdoptionWidLock:(NSString *)wid;
+- (NSString *)checkOZStatus:(NSString *)wid;
 - (NSString *)lockAdoption:(NSString *)wid;
 - (BOOL)confirmAdoption:(Adoption *)adoption;
 - (BOOL)deleteAdoption:(Adoption *)adoption;
 - (BOOL)deleteAdoptionWithServerURL:(NSString *)serverURL;
 
+- (NSString *)registerWithAdoption:(Adoption *)adoption ozfeature:(OZFeature *)feature;
+
 - (NSString *)checkUserprofileFromServerWithUsername:(NSString *)username appkey:(NSString *)appkey;
+
+- (NSDictionary *)syncAdoptionWithServer;
 
 
 @end

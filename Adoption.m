@@ -13,7 +13,7 @@
 
 @dynamic polygons;
 @dynamic timestamp;
-@dynamic userid;
+@dynamic userId;
 @dynamic wid;
 @dynamic zoneName;
 @dynamic countryName;

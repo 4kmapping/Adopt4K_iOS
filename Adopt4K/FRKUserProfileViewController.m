@@ -9,6 +9,9 @@
 #import "FRKUserProfileViewController.h"
 #import "Userprofile.h"
 #import "FRKAppDelegate.h"
+#import "KSConnManager.h"
+#import "Adoption.h"
+#import "OZFeature.h"
 
 @interface FRKUserProfileViewController ()
 {
@@ -36,6 +39,8 @@
     
     // Read a userprofile from local db.
     FRKAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+
+    Userprofile *profile = [appDelegate userprofile];
     
     NSManagedObjectContext *context = [appDelegate managedObjectContext];
     
@@ -70,6 +75,30 @@
     }
     
     
+    entityDesc = [NSEntityDescription entityForName:@"Adoption"
+                             inManagedObjectContext:context];
+    
+    fetchRequest = [[NSFetchRequest alloc] init];
+    [fetchRequest setEntity:entityDesc];
+  
+    [fetchRequest setIncludesSubentities:NO]; //Omit subentities. Default is YES (i.e. include subentities)
+    
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"(userId = %@)",
+                         profile.userId];
+    [fetchRequest setPredicate:pred];
+    
+    NSError *err;
+    NSUInteger count = [context countForFetchRequest:fetchRequest error:&err];
+    
+    //NSLog(@"count: %d", count);
+    //NSLog(@"%@", [NSString stringWithFormat:@"You adopted total %d OZ.", count]);
+    
+    if(count == NSNotFound) {
+        //Handle error
+    }
+    
+    self.adoptionStatusLabel.text = [NSString stringWithFormat:@"You adopted total %d OZ.", count];
+    //NSLog(@"%@", self.adoptionStatusLabel.text);
 }
 
 - (void)didReceiveMemoryWarning
@@ -98,4 +127,120 @@
 }
 */
 
+
+-(IBAction)didSyncClicked
+{
+    
+    UIAlertView *alert = [[UIAlertView alloc]
+              initWithTitle:@"Warning"
+                    message:@"Are you sure to synchronize with a server?"
+                   delegate:self
+          cancelButtonTitle:@"Cancel"
+          otherButtonTitles:@"Confirm",nil];
+    
+    [alert show];
+}
+
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0) {
+        NSLog(@"Canceled.");
+    }
+    else {
+        NSLog(@"Confirmed.");
+        [self syncWithServer];
+    }
+}
+
+
+
+- (BOOL)syncWithServer
+{
+    KSConnManager *conn = [KSConnManager getInstance];
+    
+    NSDictionary *jsonDict = [conn syncAdoptionWithServer];
+    
+    NSArray *results = jsonDict[@"results"];
+    
+    if ([results count] > 0)
+    {
+        
+        NSLog(@"creating adoptions by syncing.");
+        
+        FRKAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+        
+        Userprofile *profile = [appDelegate userprofile];
+        
+        NSManagedObjectContext *context = [appDelegate managedObjectContext];
+        
+        // First off, delete all local Adoption entries.
+        // ===
+        NSFetchRequest * fetchRequest = [[NSFetchRequest alloc] init];
+        [fetchRequest setEntity:[NSEntityDescription entityForName:@"Adoption"
+                                            inManagedObjectContext:context]];
+        [fetchRequest setIncludesPropertyValues:NO]; //only fetch the managedObjectID
+        
+        NSError * error = nil;
+        NSArray * adoptions = [context executeFetchRequest:fetchRequest error:&error];
+        //error handling goes here
+        for (NSManagedObject * adoption in adoptions)
+        {
+            [context deleteObject:adoption];
+        }
+        NSError *saveError = nil;
+        [context save:&saveError];
+        
+        // Create Adoption items from server.
+        // ===
+        
+        for (NSDictionary *result in results)
+        {
+        
+            NSLog(@"creating one adoption.");
+            
+            Adoption *adoption = [NSEntityDescription
+                              insertNewObjectForEntityForName:@"Adoption"
+                              inManagedObjectContext:context];
+        
+            int year = [result[@"targetyear"] intValue];
+            adoption.year = result[@"targetyear"];
+            adoption.wid = result[@"worldid"];
+            adoption.zoneName = result[@"oz_zone_name"];
+            adoption.countryName = result[@"oz_country_name"];
+            adoption.serverURL = result[@"url"];
+            adoption.userId = profile.userId;
+            // TODO: Delte later.
+            // adoption.serverURL = self.serverURL;
+            //adoption.serverURL = nil;
+            
+            OZFeature *feature = [OZFeature getOZFeatureWithWid:adoption.wid];
+            
+            adoption.polygons = feature.polygons;
+        }
+        
+        saveError = nil;
+        [context save:&saveError];
+        
+        return true;
+    }
+    
+    
+    
+    return false;
+
+}
+
+
+
+
+
+
 @end
+
+
+
+
+
+
+

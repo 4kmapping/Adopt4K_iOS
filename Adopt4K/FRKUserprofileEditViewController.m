@@ -107,10 +107,10 @@
     
     KSConnManager *conn = [KSConnManager getInstance];
     
-    displayName = [conn checkUserprofileFromServerWithUsername:username
+    NSArray *userInfo = [conn checkUserprofileFromServerWithUsername:username
                                                       appkey:appkey];
     
-    if(displayName == nil)
+    if(userInfo == nil)
     {
         
         UIAlertView *notPermitted = [[UIAlertView alloc]
@@ -153,7 +153,9 @@
 
         userprofile.username = username;
         userprofile.appkey = appkey;
-        userprofile.displayName = displayName;
+        userprofile.displayName = userInfo[0];
+        NSNumber *userId = userInfo[1];
+        userprofile.userId = [userId stringValue];
         
         NSError *savingError = nil;
         
@@ -173,7 +175,9 @@
         Userprofile *userprofile = results[0];
         userprofile.username = username;
         userprofile.appkey = appkey;
-        userprofile.displayName = displayName;
+        userprofile.displayName = userInfo[0];
+        NSNumber *userId = userInfo[1];
+        userprofile.userId = [userId stringValue];
 
         NSError *savingError = nil;
         
@@ -206,6 +210,9 @@
     [textField resignFirstResponder];
     return YES;
 }
+
+
+
 
 @end
 

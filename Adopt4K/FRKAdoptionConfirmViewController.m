@@ -52,6 +52,8 @@
 
     FRKAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     
+    Userprofile *profile = [appDelegate userprofile];
+    
     NSManagedObjectContext *context = [appDelegate managedObjectContext];
     
     
@@ -66,7 +68,10 @@
     adoption.zoneName = self.selectedFeature.zoneName;
     NSLog(@"zoneName: %@ - %@", adoption.zoneName, self.selectedFeature.zoneName);
     adoption.countryName = self.selectedFeature.countryName;
-    adoption.serverURL = self.serverURL;
+    adoption.userId = profile.userId;
+    // TODO: Delte later.
+    // adoption.serverURL = self.serverURL;
+    adoption.serverURL = nil;
     
     NSLog(@"Server URL in confirmation view: %@", self.serverURL);
     
@@ -74,18 +79,29 @@
     // TODO: Save to Server
     // ===
     KSConnManager *conn = [KSConnManager getInstance];
-    if(![conn confirmAdoption:adoption])
+
+    NSString *registeredURL = [conn registerWithAdoption:adoption
+                                               ozfeature:[self selectedFeature]];
+    
+    NSLog (@"registeredURL received: %@", registeredURL);
+    
+    if(registeredURL == nil)
     {
         return false;
     }
-    
+
+    // Save server side URL
+    adoption.serverURL = registeredURL;
+
     // Save to local
     NSError *savingError = nil;
     
     if ([context save:&savingError])
     {
-        NSLog(@"Successfully saved the context.");
+        NSLog(@"Successfully saved adoption in the context.");
         [self displayAdoptions];
+        
+        
         return true;
     }
     else
@@ -192,6 +208,7 @@
             return NO;
         }
     }
+    /* TODO: No need to delete lock, remove this later.
     if ([identifier isEqualToString:@"cancelAdoptionSegue"])
     {
         KSConnManager *conn = [KSConnManager getInstance];
@@ -211,6 +228,7 @@
             return NO;
         }
     }
+    */
         
         
     

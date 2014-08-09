@@ -32,9 +32,10 @@
     // TODO: To create a sqlite with OZFeature
     // USE ONLY ONCE and COMMENT OUT
     //[self loadOZFeaturesFromJSON];
-    
+    //[self loadOZFeaturesFromJSON:@"all_ozfeatures_ABC_4_coredata_2"];
     
     //[self testOZFeatureCoreData];
+    //[self testOZFeatureCoreDataWithWid:@"USA-HIA"];
     
     // load Userprofile
     // ===
@@ -242,8 +243,8 @@
     [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
                                          NSUserDomainMask, YES) objectAtIndex:0];
     
-    NSString* foofile = [documentsPath stringByAppendingPathComponent:@"Adopt4K.sqlite"];
-    BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:foofile];
+    NSString* dbFile = [documentsPath stringByAppendingPathComponent:@"Adopt4K.sqlite"];
+    BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:dbFile];
     
     if(fileExists)
     {
@@ -296,22 +297,24 @@
             ozfeature.worldType = [dict valueForKey:@"worldType"];
             ozfeature.population = [dict valueForKey:@"population"];
             
-            NSError *savingError = nil;
-            
-            if ([[self managedObjectContext] save:&savingError])
-            {
-                NSLog(@"Successfully saved the context.");
-            }
-            else
-            {
-                NSLog(@"Failed to save the context. Error = %@", savingError);
-            }
             
         }
         else
         {
             NSLog(@"Failed to create the new ozfeature.");
         }
+
+        NSError *savingError = nil;
+        
+        if ([[self managedObjectContext] save:&savingError])
+        {
+            NSLog(@"Successfully saved the context.");
+        }
+        else
+        {
+            NSLog(@"Failed to save the context. Error = %@", savingError);
+        }
+       
         
     }
     
@@ -333,11 +336,48 @@
     
     NSArray *fetchedObjects = [self.managedObjectContext
                                executeFetchRequest:fetchRequest error:&error];
+    
+    
+    
+    for (NSManagedObject *info in fetchedObjects)
+    {
+        
+        //NSLog(@"polygons: %@", [ozfeature valueForKey:@"polygons"]);
+        
+        NSLog(@"wid: %@", [info valueForKey:@"wid"]);
+        //NSManagedObject *details = [info valueForKey:@"details"];
+        //NSLog(@"Zip: %@", [details valueForKey:@"zip"]);
+    }
+    
+    NSLog(@"Total OZ count: %d", [fetchedObjects count]);
+}
+
+
+- (void)testOZFeatureCoreDataWithWid:(NSString *)wid
+{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription
+                                   entityForName:@"OZFeature"
+                                   inManagedObjectContext:self.managedObjectContext];
+    
+    NSError *error;
+    
+    [fetchRequest setEntity:entity];
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"(wid = %@)", wid];
+    [fetchRequest setPredicate:pred];
+    
+    
+    NSArray *fetchedObjects = [self.managedObjectContext
+                               executeFetchRequest:fetchRequest error:&error];
+    
+
+    NSLog(@"Inside testOZFeatureCoreDataWithWid");
+    
     for (NSManagedObject *info in fetchedObjects)
     {
         OZFeature *ozfeature = (OZFeature *)info;
         
-        NSLog(@"polygons: %@", [ozfeature valueForKey:@"polygons"]);
+        //NSLog(@"polygons: %@", [ozfeature valueForKey:@"polygons"]);
         
         NSLog(@"wid: %@", [info valueForKey:@"wid"]);
         //NSManagedObject *details = [info valueForKey:@"details"];
@@ -370,9 +410,11 @@
 // If the model doesn't already exist, it is created from the application's model.
 - (NSManagedObjectModel *)managedObjectModel
 {
+    
     if (_managedObjectModel != nil) {
         return _managedObjectModel;
     }
+    
     NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"Adopt4K" withExtension:@"momd"];
     _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     return _managedObjectModel;
@@ -383,9 +425,11 @@
 
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinator
 {
+    
     if (_persistentStoreCoordinator != nil) {
         return _persistentStoreCoordinator;
     }
+    
     
     NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"Adopt4K.sqlite"];
     
@@ -404,7 +448,18 @@
         }
     }
     
-    NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption, [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
+   // ***
+
+    NSMutableDictionary *pragmaOptions = [NSMutableDictionary dictionary];
+    [pragmaOptions setObject:@"DELETE" forKey:@"journal_mode"];
+    
+    NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption, [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, pragmaOptions, NSSQLitePragmasOption, nil];
+    //[_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:options error:&error]
+
+    
+   // ***
+    
+    //NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption, [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel: [self managedObjectModel]];
     
     NSError *error;

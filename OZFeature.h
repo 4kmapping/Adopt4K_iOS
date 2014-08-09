@@ -24,4 +24,6 @@
 @property (nonatomic, retain) NSString * worldType;
 
 
++ (OZFeature *)getOZFeatureWithWid:(NSString *)wid;
+
 @end

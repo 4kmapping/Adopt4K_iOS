@@ -8,11 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FRKUserProfileViewController : UIViewController
+@interface FRKUserProfileViewController : UIViewController <UIAlertViewDelegate>
 
 
 @property (weak,nonatomic) IBOutlet UILabel *displayNameLabel;
 @property (weak,nonatomic) IBOutlet UILabel *usernameLabel;
 @property (weak,nonatomic) IBOutlet UILabel *appkeyLabel;
+
+@property (weak,nonatomic) IBOutlet UILabel *adoptionStatusLabel;
+@property (weak,nonatomic) IBOutlet UILabel *syncButton;
+
 
 @end

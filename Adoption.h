@@ -15,7 +15,7 @@
 
 @property (nonatomic, retain) NSArray *polygons;
 @property (nonatomic, retain) NSDate * timestamp;
-@property (nonatomic, retain) NSString * userid;
+@property (nonatomic, retain) NSString * userId;
 @property (nonatomic, retain) NSString * wid;
 @property (nonatomic, retain) NSString * zoneName;
 @property (nonatomic, retain) NSString * countryName;

@@ -66,6 +66,8 @@
 {
     FRKAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     
+    Userprofile *profile = [appDelegate userprofile];
+    
     NSManagedObjectContext *context = [appDelegate managedObjectContext];
     
     NSEntityDescription *entityDesc = [NSEntityDescription
@@ -74,6 +76,11 @@
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     [fetchRequest setEntity:entityDesc];
+    
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"(userId = %@)",
+                         profile.userId];
+    [fetchRequest setPredicate:pred];
+
     
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"timestamp"
                                                                    ascending:NO];

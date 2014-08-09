@@ -14,6 +14,7 @@
 @dynamic displayName;
 @dynamic username;
 @dynamic appkey;
+@dynamic userId;
 
 
 @end

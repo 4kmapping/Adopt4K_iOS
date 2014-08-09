@@ -15,6 +15,7 @@
 @property (nonatomic, retain) NSString * displayName;
 @property (nonatomic, retain) NSString * username;
 @property (nonatomic, retain) NSString * appkey;
+@property (nonatomic, retain) NSString * userId;
 
 
 - (BOOL)isReady;
