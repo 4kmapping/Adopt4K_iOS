@@ -15,7 +15,7 @@
 @property (weak,nonatomic) IBOutlet UILabel *usernameLabel;
 @property (weak,nonatomic) IBOutlet UILabel *appkeyLabel;
 
-@property (weak,nonatomic) IBOutlet UILabel *adoptionStatusLabel;
+@property (strong,nonatomic) IBOutlet UILabel *adoptionStatusLabel;
 @property (weak,nonatomic) IBOutlet UILabel *syncButton;
 
 

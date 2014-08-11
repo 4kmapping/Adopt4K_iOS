@@ -7,6 +7,7 @@
 //
 
 #import "Adoption.h"
+#import "FRKAppDelegate.h"
 
 
 @implementation Adoption
@@ -26,4 +27,32 @@
     [self setTimestamp:[NSDate date]];
 }
 
+
++ (int)countAdoptionsForUserId:(NSString *)uid
+{
+    
+    FRKAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    
+    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    
+    NSEntityDescription *entityDesc = [NSEntityDescription
+                                       entityForName:@"Adoption"
+                                       inManagedObjectContext:context];
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    [fetchRequest setEntity:entityDesc];
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"(userId = %@)", uid];
+    [fetchRequest setPredicate:pred];
+    
+    NSError *err;
+    NSUInteger count = [context countForFetchRequest:fetchRequest error:&err];
+
+    return count;
+}
+
+
+
 @end
+
+
+

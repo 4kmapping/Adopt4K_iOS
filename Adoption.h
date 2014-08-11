@@ -23,6 +23,9 @@
 @property (nonatomic, retain) NSString *serverURL;
 
 
++ (int)countAdoptionsForUserId:(NSString *)uid;
+
+
 @end
 
 

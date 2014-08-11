@@ -16,7 +16,6 @@
 @interface FRKUserProfileViewController ()
 {
     Userprofile *userprofile;
-    
 }
 
 @end
@@ -74,31 +73,18 @@
         // To nothing yet.
     }
     
-    
-    entityDesc = [NSEntityDescription entityForName:@"Adoption"
-                             inManagedObjectContext:context];
-    
-    fetchRequest = [[NSFetchRequest alloc] init];
-    [fetchRequest setEntity:entityDesc];
-  
-    [fetchRequest setIncludesSubentities:NO]; //Omit subentities. Default is YES (i.e. include subentities)
-    
-    NSPredicate *pred = [NSPredicate predicateWithFormat:@"(userId = %@)",
-                         profile.userId];
-    [fetchRequest setPredicate:pred];
-    
-    NSError *err;
-    NSUInteger count = [context countForFetchRequest:fetchRequest error:&err];
-    
-    //NSLog(@"count: %d", count);
-    //NSLog(@"%@", [NSString stringWithFormat:@"You adopted total %d OZ.", count]);
+    int count = [Adoption countAdoptionsForUserId:profile.userId];
     
     if(count == NSNotFound) {
         //Handle error
     }
     
-    self.adoptionStatusLabel.text = [NSString stringWithFormat:@"You adopted total %d OZ.", count];
+    self.adoptionStatusLabel.text = [NSString stringWithFormat:
+                                     @"You adopted total %d OZ.", count];
     //NSLog(@"%@", self.adoptionStatusLabel.text);
+    
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -119,7 +105,8 @@
 /*
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
+// In a storyboard-based application, 
+// you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     // Get the new view controller using [segue destinationViewController].
@@ -203,7 +190,6 @@
                               insertNewObjectForEntityForName:@"Adoption"
                               inManagedObjectContext:context];
         
-            int year = [result[@"targetyear"] intValue];
             adoption.year = result[@"targetyear"];
             adoption.wid = result[@"worldid"];
             adoption.zoneName = result[@"oz_zone_name"];
@@ -222,17 +208,17 @@
         saveError = nil;
         [context save:&saveError];
         
+        // Update total num of adoptions in UI
+        int count = [Adoption countAdoptionsForUserId:profile.userId];
+        self.adoptionStatusLabel.text = [NSString stringWithFormat:
+                                         @"You adopted total %d OZ.", count];
+        
         return true;
     }
-    
-    
     
     return false;
 
 }
-
-
-
 
 
 
