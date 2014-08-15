@@ -148,6 +148,11 @@
     
     NSDictionary *jsonDict = [conn syncAdoptionWithServer];
     
+    if (jsonDict == nil)
+    {
+        return false;
+    }
+    
     NSArray *results = jsonDict[@"results"];
     
     if ([results count] > 0)

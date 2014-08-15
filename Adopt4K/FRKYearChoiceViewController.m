@@ -43,7 +43,9 @@
     
     NSInteger intYear = [yearButton.titleLabel.text integerValue];
     [self.prevViewController setSelectedTargetYear:(int)intYear];
-    self.prevViewController.yearButton.titleLabel.text = yearButton.titleLabel.text;
+    NSString *yearStr = yearButton.titleLabel.text;
+    [self.prevViewController.yearButton setTitle:yearStr forState:UIControlStateNormal];
+    //self.prevViewController.yearButton.titleLabel.text = yearButton.titleLabel.text;
     
     //NSLog(@"%d", intYear);
     //NSLog(@"%d", self.prevViewController.selectedTargetYear);

@@ -68,7 +68,7 @@
 - (IBAction)loadOZFeature:(id)sender
 {
 
-    NSString *wid = self.ozidTextField.text;
+    NSString *wid = [self.ozidTextField.text uppercaseString];
     NSLog(@"wid >> %@",wid);
 
     // TODO: Check if the current wid is already chosen by others.
@@ -242,7 +242,7 @@
     {
         FRKAdoptionYearViewController *vc = [segue destinationViewController];
         
-        NSString *wid = self.ozidTextField.text;
+        NSString *wid = [self.ozidTextField.text uppercaseString];
         if (![self.currFeature.wid isEqualToString:wid])
         {
             self.currFeature = [OZFeature getOZFeatureWithWid:wid];

@@ -14,15 +14,17 @@
 
 @property (weak,nonatomic) OZFeature *selectedFeature;
 @property int selectedTargetYear;
+@property (strong,nonatomic) NSString *targetYearString;
 @property (weak,nonatomic) GMSMapView *gmView;
 @property (weak,nonatomic) NSString *serverURL;
 
 
 @property (weak,nonatomic) IBOutlet UILabel *ozidLabel;
 @property (weak,nonatomic) IBOutlet UILabel *ozNameLabel;
-@property (weak,nonatomic) IBOutlet UIButton *yearButton;
+@property (strong,nonatomic) IBOutlet UIButton *yearButton;
 @property (strong,nonatomic) NSArray * yearChoices;
 
 
+- (void)refreshYearLabel;
 
 @end

@@ -41,9 +41,17 @@
     lineView1.backgroundColor = colorGrey;
     [self.view addSubview:lineView1];
     
+    //self.yearButton.titleLabel.text = @"Choose Year";
+    //self.selectedTargetYear = 0;
+    //[self refreshYearLabel];
+    
+    
 }
 
-
+- (void)refreshYearLabel
+{
+    self.yearButton.titleLabel.text = [NSString stringWithFormat:@"%d",self.selectedTargetYear ];
+}
 
 
 
@@ -92,6 +100,32 @@
         */ 
     }
 }
+
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
+{
+    if ([identifier isEqualToString:@"adoptConfirmSegue"])
+    {
+        // perform your computation to determine whether segue should occur
+        if(self.selectedTargetYear < 2015)
+        {
+            UIAlertView *notPermitted = [[UIAlertView alloc]
+                                         initWithTitle:@"Alert"
+                                         message:@"Please choose a target year."
+                                         delegate:nil
+                                         cancelButtonTitle:@"OK"
+                                         otherButtonTitles:nil];
+            // shows alert to user
+            [notPermitted show];
+            
+            return NO; // Still allow users to choose OZ.
+        }
+        
+    }
+    
+    // by default perform the segue transition
+    return YES;
+}
+
 
 
 @end
